@@ -40,5 +40,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

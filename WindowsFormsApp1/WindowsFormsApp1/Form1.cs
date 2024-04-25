@@ -20,8 +20,6 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            RoundedLabel(label1, 20);
-            RoundedLabel(label2, 20);
         }
         private void RoundedLabel(Label label, int radius)
         {
