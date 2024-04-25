@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace WindowsFormsApp1
         public Form2(string filePath)
         {
             InitializeComponent();
+            LoadColumnNamesFromCSV(filePath);
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,6 +39,31 @@ namespace WindowsFormsApp1
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadColumnNamesFromCSV(string filePath)
+        {
+            try
+            {
+                
+                string firstLine = File.ReadLines(filePath).First();
+
+                
+                string[] columnNames = firstLine.Split(',');
+                foreach (string columnName in columnNames)
+                {
+                    listBox1.Items.Add(columnName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки данных из файла: " + ex.Message);
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

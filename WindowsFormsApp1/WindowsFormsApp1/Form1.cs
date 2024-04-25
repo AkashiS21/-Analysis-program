@@ -66,6 +66,7 @@ namespace WindowsFormsApp1
                     
 
                     string filePath = openFileDialog.FileName;
+
                     Form2 form2 = new Form2(filePath);
                     form2.Owner = this;
                     form2.Show();
