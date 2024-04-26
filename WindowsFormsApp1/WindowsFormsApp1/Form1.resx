@@ -118,9 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Группа разработчиков Ярославского государственного технического университета представляет:
-
-Программное обеспечение, реализующее статистический анализ по бракам и разводам в мире, с целью выявления ключевых факторов, влияющих на вероятность разводов.</value>
+    <value>Доброго времени суток, уважаемый пользователь! Наше приложение - это инструмент для исследования влияния различных факторов на вероятность развода.  Чтобы начать работу с приложением вам необходимо загрузить свои данные, нажав на кнопку ниже:</value>
   </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
