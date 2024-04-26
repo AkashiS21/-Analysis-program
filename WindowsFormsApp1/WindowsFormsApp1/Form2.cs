@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
                 
                 string firstLine = File.ReadLines(filePath).First();
                 
-                string[] columnNames = firstLine.Split(',');
+                string[] columnNames = firstLine.Split(';');
                 foreach (string columnName in columnNames)
                 {
                     listBox1.Items.Add(columnName);
