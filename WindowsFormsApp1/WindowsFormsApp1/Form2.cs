@@ -49,7 +49,6 @@ namespace WindowsFormsApp1
             {
                 
                 string firstLine = File.ReadLines(filePath).First();
-
                 
                 string[] columnNames = firstLine.Split(',');
                 foreach (string columnName in columnNames)
@@ -64,6 +63,16 @@ namespace WindowsFormsApp1
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
