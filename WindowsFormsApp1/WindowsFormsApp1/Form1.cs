@@ -94,5 +94,15 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string authors = "Авторы приложения:\n\n" +
+                     "- Чудаков Александр Дмитриевич\n" +
+                     "- Жерельев Егор Иванович\n" +
+                     "- Коржавина Василиса Евгеневна\n";
+
+            MessageBox.Show(authors, "Авторы", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
