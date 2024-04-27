@@ -101,5 +101,8 @@
   <ItemGroup>
     <None Include="Properties\free-icon-arrowhead-thin-outline-to-the-left-32542.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\28370.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

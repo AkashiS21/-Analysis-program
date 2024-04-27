@@ -20,8 +20,6 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            RoundedLabel(label1, 20);
-            RoundedLabel(label2, 20);
         }
         private void RoundedLabel(Label label, int radius)
         {
@@ -74,6 +72,26 @@ namespace WindowsFormsApp1
                 }
 
             }
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_2(object sender, EventArgs e)
+        {
 
         }
     }

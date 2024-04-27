@@ -76,5 +76,80 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+            {
+                listBox2.Items.Add(listBox1.SelectedItem);
+                listBox1.Items.Remove(listBox1.SelectedItem);
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedItem != null)
+            {
+                listBox1.Items.Add(listBox2.SelectedItem);
+                listBox2.Items.Remove(listBox2.SelectedItem);
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            foreach (var item in listBox1.Items.Cast<string>().ToList())
+            {
+                listBox2.Items.Add(item);
+            }
+            listBox1.Items.Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+            {
+                listBox3.Items.Add(listBox1.SelectedItem);
+                listBox1.Items.Remove(listBox1.SelectedItem);
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedItem != null)
+            {
+                listBox1.Items.Add(listBox3.SelectedItem);
+                listBox3.Items.Remove(listBox3.SelectedItem);
+            }
+        }
     }
 }
