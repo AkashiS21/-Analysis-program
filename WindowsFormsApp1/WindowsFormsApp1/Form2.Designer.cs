@@ -40,7 +40,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -129,7 +128,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(683, 434);
+            this.button5.Location = new System.Drawing.Point(349, 430);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(109, 40);
             this.button5.TabIndex = 12;
@@ -138,7 +137,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(629, 317);
+            this.button6.Location = new System.Drawing.Point(629, 270);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(152, 48);
             this.button6.TabIndex = 13;
@@ -153,6 +152,7 @@
             this.listBox3.Size = new System.Drawing.Size(244, 95);
             this.listBox3.TabIndex = 14;
             // 
+<<<<<<< Updated upstream
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(68, 416);
@@ -165,20 +165,31 @@
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(326, 416);
+=======
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(208, 430);
+>>>>>>> Stashed changes
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(109, 40);
             this.button8.TabIndex = 16;
             this.button8.Text = "Отмена";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
+<<<<<<< Updated upstream
             this.button9.Location = new System.Drawing.Point(194, 416);
+=======
+            this.button9.Location = new System.Drawing.Point(67, 430);
+>>>>>>> Stashed changes
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(107, 40);
             this.button9.TabIndex = 17;
             this.button9.Text = "Сброс";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -188,6 +199,7 @@
             this.button10.TabIndex = 18;
             this.button10.Text = "Параметры";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // label3
             // 
@@ -220,7 +232,6 @@
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -255,7 +266,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;

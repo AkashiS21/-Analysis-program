@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using WindowsFormsApp1.Properties;
+using System.IO;
+using static System.Net.WebRequestMethods;
 
 
 
@@ -94,5 +96,11 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
