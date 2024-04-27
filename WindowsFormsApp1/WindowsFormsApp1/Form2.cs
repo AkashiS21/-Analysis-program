@@ -151,5 +151,14 @@ namespace WindowsFormsApp1
                 listBox3.Items.Remove(listBox3.SelectedItem);
             }
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            foreach (var item in listBox2.Items.Cast<string>().ToList())
+            {
+                listBox1.Items.Add(item);
+            }
+            listBox2.Items.Clear();
+        }
     }
 }
