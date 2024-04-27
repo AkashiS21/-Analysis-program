@@ -13,29 +13,33 @@ namespace WindowsFormsApp1
 {
     public partial class Form2 : Form
     {
-        public Form2(string filePath)
+        private string filePath;
+        private Form1 form1;
+
+        public Form2(string filePath,Form1 form1)
         {
+            this.form1 = form1;
+            this.filePath = filePath;
             InitializeComponent();
             LoadColumnNamesFromCSV(filePath);
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             if (MessageBox.Show("Вы уверены, что хотите выйти?", "Подтверждение",
-            MessageBoxButtons.YesNo) == DialogResult.No)
+        MessageBoxButtons.YesNo) == DialogResult.No)
             {
-                e.Cancel = true; 
+                e.Cancel = true;
             }
+            
+            
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this.Owner != null)
-            {
-                Form1 form3 = new Form1();
-                form3.Show();
+            this.form1.Show();
                 
-            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -159,6 +163,19 @@ namespace WindowsFormsApp1
                 listBox1.Items.Add(item);
             }
             listBox2.Items.Clear();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+            listBox3.Items.Clear();
+            listBox1.Items.Clear();
+            string firstLine = File.ReadLines(filePath).First();
+            string[] columnNames = firstLine.Split(';');
+            foreach (string columnName in columnNames)
+            {
+                listBox1.Items.Add(columnName);
+            }
         }
     }
 }
