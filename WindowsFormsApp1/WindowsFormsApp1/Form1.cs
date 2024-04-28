@@ -104,5 +104,26 @@ namespace WindowsFormsApp1
 
             MessageBox.Show(authors, "Авторы", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string wordFilePath = @"C:\Users\пк\kursach\-Analysis-program\Справка.docx";
+
+            try
+            {
+                // Создаем объект Word Application
+                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+
+                // Открываем документ
+                Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Open(wordFilePath);
+
+                // Делаем Word видимым (необязательно)
+                wordApp.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка открытия документа: " + ex.Message);
+            }
+        }
     }
 }
