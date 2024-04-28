@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Service;
 
 namespace WindowsFormsApp1
 {
@@ -108,7 +109,7 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            AnalyzeCorrelation();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -210,6 +211,17 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Ошибка открытия документа: " + ex.Message);
             }
+        }
+        private void AnalyzeCorrelation()
+        {
+            List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+            List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
+
+            Parser parser = new Parser();
+            DataTable data = parser.LoadDataFromCSV(filePath);
+
+            CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
+            Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
         }
     }
 }
