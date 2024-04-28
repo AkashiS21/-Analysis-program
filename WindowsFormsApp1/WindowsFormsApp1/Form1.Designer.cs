@@ -92,7 +92,7 @@
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
-            this.Text = "Analysis App";
+            this.Text = "Приложение для анализа данных";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

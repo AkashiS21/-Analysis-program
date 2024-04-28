@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
     {
         private string filePath;
         private Form1 form1;
+        private Form3 form3;
+        
 
         public Form2(string filePath,Form1 form1)
         {
@@ -109,7 +111,27 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AnalyzeCorrelation();
+            Form3 form3 = new Form3();
+            // Получаем список выбранных столбцов
+            List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+            List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
+
+            // Создаем экземпляры Parser и CorrelationAnalyzer
+            Parser parser = new Parser();
+            CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
+
+            // Загружаем данные из CSV файла
+            DataTable data = parser.LoadDataFromCSV(filePath);
+
+            Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+            form3.SetCorrelationResults(correlationResults);
+
+            form3.Show();
+
+            //    Form3 form3 = new Form3(filePath, this);
+            //    form3.Owner = this;
+            //    form3.Show();
+            //    this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -198,13 +220,8 @@ namespace WindowsFormsApp1
 
             try
             {
-                // Создаем объект Word Application
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
-
-                // Открываем документ
                 Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Open(wordFilePath);
-
-                // Делаем Word видимым (необязательно)
                 wordApp.Visible = true;
             }
             catch (Exception ex)

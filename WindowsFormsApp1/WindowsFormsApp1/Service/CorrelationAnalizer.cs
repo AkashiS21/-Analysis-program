@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -25,7 +26,7 @@ public class CorrelationAnalyzer
 
     private double CalculateCorrelation(DataTable data, string targetColumn, List<string> featureColumns)
     {
-        double[] targetValues = data.AsEnumerable().Select(row => Convert.ToDouble(row[targetColumn])).ToArray();
+        double[] targetValues = data.AsEnumerable().Select(row => ParseDouble(row[targetColumn])).ToArray();
 
         double correlation = 0.0;
 
@@ -33,13 +34,18 @@ public class CorrelationAnalyzer
         {
             if (data.Columns.Contains(featureColumn) && featureColumn != targetColumn)
             {
-                double[] featureValues = data.AsEnumerable().Select(row => Convert.ToDouble(row[featureColumn])).ToArray();
+                double[] featureValues = data.AsEnumerable().Select(row => ParseDouble(row[featureColumn])).ToArray();
                 double featureCorrelation = CalculatePearsonCorrelation(targetValues, featureValues);
                 correlation += featureCorrelation;
             }
         }
 
         return correlation;
+    }
+
+    private double ParseDouble(object value)
+    {
+        return double.Parse(value.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture);
     }
 
     private double CalculatePearsonCorrelation(double[] x, double[] y)
