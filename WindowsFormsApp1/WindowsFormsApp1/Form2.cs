@@ -216,7 +216,7 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string wordFilePath = @"C:\Users\пк\kursach\-Analysis-program\Корреляция.docx";
+            string wordFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Корреляция.docx";
 
             try
             {

@@ -107,7 +107,7 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string wordFilePath = @"C:\Users\пк\kursach\-Analysis-program\Справка.docx";
+            string wordFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Справка.docx";
 
             try
             {
