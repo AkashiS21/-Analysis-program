@@ -19,14 +19,45 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        public void SetCorrelationResults(Dictionary<string, double> results)
+        public void SetCorrelationResults(Dictionary<string, double> correlationResults, List<string> featureColumns)
         {
-            // Здесь вы будете обрабатывать результаты и выводить их на форму
-            // Например, можно добавить их в ListBox, DataGridView или вывести как текст
-            // Пример с ListBox:
-            foreach (var item in results)
+            // Получаем список столбцов (целевые + признаки)
+            List<string> allColumns = correlationResults.Keys.ToList();
+            allColumns.AddRange(featureColumns);
+            allColumns = allColumns.Distinct().ToList();
+
+            // Создаем столбцы и строки DataGridView
+            correlationMatrixDataGridView.Columns.Clear();
+            correlationMatrixDataGridView.Rows.Clear();
+            foreach (string column in allColumns)
             {
-                listBox1.Items.Add($"{item.Key}: {item.Value:F4}");
+                correlationMatrixDataGridView.Columns.Add(column, column);
+            }
+            correlationMatrixDataGridView.Rows.Add(allColumns.Count);
+
+            // Заполняем DataGridView значениями корреляции
+            for (int i = 0; i < allColumns.Count; i++)
+            {
+                string rowColumn = allColumns[i];
+                correlationMatrixDataGridView.Rows[i].HeaderCell.Value = rowColumn;
+                for (int j = 0; j < allColumns.Count; j++)
+                {
+                    string column = allColumns[j];
+                    double correlation = 0.0;
+                    if (i == j)
+                    {
+                        correlation = 1.0; // Корреляция столбца с самим собой
+                    }
+                    else if (correlationResults.ContainsKey(rowColumn) && featureColumns.Contains(column))
+                    {
+                        correlation = correlationResults[rowColumn]; // Суммарная корреляция с признаками
+                    }
+                    else if (correlationResults.ContainsKey(column) && featureColumns.Contains(rowColumn))
+                    {
+                        correlation = correlationResults[column]; // Суммарная корреляция с признаками (симметрично)
+                    }
+                    correlationMatrixDataGridView.Rows[i].Cells[j].Value = correlation.ToString("F4");
+                }
             }
         }
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)

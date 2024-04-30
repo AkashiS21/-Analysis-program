@@ -111,7 +111,6 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Form3 form3 = new Form3();
             // Получаем список выбранных столбцов
             List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
             List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
@@ -124,14 +123,9 @@ namespace WindowsFormsApp1
             DataTable data = parser.LoadDataFromCSV(filePath);
 
             Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
-            form3.SetCorrelationResults(correlationResults);
-
+            Form3 form3 = new Form3();
+            form3.SetCorrelationResults(correlationResults, featureColumns);
             form3.Show();
-
-            //    Form3 form3 = new Form3(filePath, this);
-            //    form3.Owner = this;
-            //    form3.Show();
-            //    this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
