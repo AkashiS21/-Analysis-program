@@ -6,9 +6,30 @@ using System.Linq;
 
 public class CorrelationAnalyzer
 {
+
+
     public Dictionary<string, double> AnalyzeCorrelation(DataTable data, List<string> featureColumns, List<string> targetColumns)
     {
         Dictionary<string, double> correlationResults = new Dictionary<string, double>();
+
+        double CalculateCorrelationLocal(string targetColumn)
+        {
+            double[] targetValues = data.AsEnumerable().Select(row => ParseDouble(row[targetColumn])).ToArray();
+
+            double correlation = 0.0;
+
+            foreach (string featureColumn in featureColumns)
+            {
+                if (data.Columns.Contains(featureColumn) && featureColumn != targetColumn)
+                {
+                    double[] featureValues = data.AsEnumerable().Select(row => ParseDouble(row[featureColumn])).ToArray();
+                    double featureCorrelation = CalculatePearsonCorrelation(targetValues, featureValues);
+                    correlation += featureCorrelation;
+                }
+            }
+
+            return correlation;
+        }
 
         foreach (string targetColumn in targetColumns)
         {
@@ -17,30 +38,11 @@ public class CorrelationAnalyzer
                 throw new ArgumentException($"Столбец {targetColumn} отсутствует в исходных данных.");
             }
 
-            double correlation = CalculateCorrelation(data, targetColumn, featureColumns);
+            double correlation = CalculateCorrelationLocal(targetColumn);
             correlationResults.Add(targetColumn, correlation);
         }
 
         return correlationResults;
-    }
-
-    private double CalculateCorrelation(DataTable data, string targetColumn, List<string> featureColumns)
-    {
-        double[] targetValues = data.AsEnumerable().Select(row => ParseDouble(row[targetColumn])).ToArray();
-
-        double correlation = 0.0;
-
-        foreach (string featureColumn in featureColumns)
-        {
-            if (data.Columns.Contains(featureColumn) && featureColumn != targetColumn)
-            {
-                double[] featureValues = data.AsEnumerable().Select(row => ParseDouble(row[featureColumn])).ToArray();
-                double featureCorrelation = CalculatePearsonCorrelation(targetValues, featureValues);
-                correlation += featureCorrelation;
-            }
-        }
-
-        return correlation;
     }
 
     private double ParseDouble(object value)
