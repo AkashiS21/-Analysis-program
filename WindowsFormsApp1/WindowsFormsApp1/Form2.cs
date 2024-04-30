@@ -122,9 +122,9 @@ namespace WindowsFormsApp1
             // Загружаем данные из CSV файла
             DataTable data = parser.LoadDataFromCSV(filePath);
 
-            Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+            var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
             Form3 form3 = new Form3();
-            form3.SetCorrelationResults(correlationResults, featureColumns);
+            form3.SetCorrelationResults(matrix, featureColumns, targetColumns);
             form3.Show();
         }
 
@@ -223,16 +223,17 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Ошибка открытия документа: " + ex.Message);
             }
         }
+
         private void AnalyzeCorrelation()
         {
-            List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
-            List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
+            //List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+            //List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
 
-            Parser parser = new Parser();
-            DataTable data = parser.LoadDataFromCSV(filePath);
+            //Parser parser = new Parser();
+            //DataTable data = parser.LoadDataFromCSV(filePath);
 
-            CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
-            Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+            //CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
+            //Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
         }
     }
 }

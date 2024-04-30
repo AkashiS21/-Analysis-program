@@ -46,9 +46,10 @@
             // correlationMatrixDataGridView
             // 
             this.correlationMatrixDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.correlationMatrixDataGridView.Location = new System.Drawing.Point(27, 31);
+            this.correlationMatrixDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.correlationMatrixDataGridView.Location = new System.Drawing.Point(0, 0);
             this.correlationMatrixDataGridView.Name = "correlationMatrixDataGridView";
-            this.correlationMatrixDataGridView.Size = new System.Drawing.Size(748, 330);
+            this.correlationMatrixDataGridView.Size = new System.Drawing.Size(800, 330);
             this.correlationMatrixDataGridView.TabIndex = 1;
             // 
             // Form3

@@ -6,43 +6,26 @@ using System.Linq;
 
 public class CorrelationAnalyzer
 {
-
-
-    public Dictionary<string, double> AnalyzeCorrelation(DataTable data, List<string> featureColumns, List<string> targetColumns)
+    public double[,] AnalyzeCorrelation(DataTable data, List<string> featureColumns, List<string> targetColumns)
     {
-        Dictionary<string, double> correlationResults = new Dictionary<string, double>();
+        var columns = featureColumns.Concat(targetColumns).ToList();
+        var matrix = new double[columns.Count, columns.Count];
 
-        double CalculateCorrelationLocal(string targetColumn)
+        for (var row = 0; row < columns.Count; row++)
         {
-            double[] targetValues = data.AsEnumerable().Select(row => ParseDouble(row[targetColumn])).ToArray();
-
-            double correlation = 0.0;
-
-            foreach (string featureColumn in featureColumns)
+            for (var column = 0; column < columns.Count; column++)
             {
-                if (data.Columns.Contains(featureColumn) && featureColumn != targetColumn)
-                {
-                    double[] featureValues = data.AsEnumerable().Select(row => ParseDouble(row[featureColumn])).ToArray();
-                    double featureCorrelation = CalculatePearsonCorrelation(targetValues, featureValues);
-                    correlation += featureCorrelation;
-                }
-            }
+                var rowName = columns[row];
+                var columnName = columns[column];
 
-            return correlation;
+                var x = data.AsEnumerable().Select(v => ParseDouble(v[rowName])).ToArray();
+                var y = data.AsEnumerable().Select(v => ParseDouble(v[columnName])).ToArray();
+
+                matrix[row, column] = CalculatePearsonCorrelation(x, y);
+            }
         }
 
-        foreach (string targetColumn in targetColumns)
-        {
-            if (!data.Columns.Contains(targetColumn))
-            {
-                throw new ArgumentException($"Столбец {targetColumn} отсутствует в исходных данных.");
-            }
-
-            double correlation = CalculateCorrelationLocal(targetColumn);
-            correlationResults.Add(targetColumn, correlation);
-        }
-
-        return correlationResults;
+        return matrix;
     }
 
     private double ParseDouble(object value)

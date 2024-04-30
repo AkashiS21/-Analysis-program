@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form3 : Form
     {
+        // FIX: Uninitialized fields
         private string filePath;
         private Form2 form2;
 
@@ -19,60 +20,45 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-        public void SetCorrelationResults(Dictionary<string, double> correlationResults, List<string> featureColumns)
-        {
-            // Получаем список столбцов (целевые + признаки)
-            List<string> allColumns = correlationResults.Keys.ToList();
-            allColumns.AddRange(featureColumns);
-            allColumns = allColumns.Distinct().ToList();
 
-            // Создаем столбцы и строки DataGridView
+        public void SetCorrelationResults(double[,] matrix, List<string> featureColumns, List<string> targetColumns)
+        {
             correlationMatrixDataGridView.Columns.Clear();
             correlationMatrixDataGridView.Rows.Clear();
-            foreach (string column in allColumns)
+
+            var columns = featureColumns.Concat(targetColumns).ToList();
+
+            foreach (string column in columns)
             {
                 correlationMatrixDataGridView.Columns.Add(column, column);
             }
-            correlationMatrixDataGridView.Rows.Add(allColumns.Count);
 
-            // Заполняем DataGridView значениями корреляции
-            for (int i = 0; i < allColumns.Count; i++)
+            for (var row = 0; row < columns.Count; row++)
             {
-                string rowColumn = allColumns[i];
-                correlationMatrixDataGridView.Rows[i].HeaderCell.Value = rowColumn;
-                for (int j = 0; j < allColumns.Count; j++)
+                correlationMatrixDataGridView.Rows.Add(columns.Count);
+                correlationMatrixDataGridView.Rows[row].HeaderCell.Value = columns[row];
+
+                for (var column = 0; column < columns.Count; column++)
                 {
-                    string column = allColumns[j];
-                    double correlation = 0.0;
-                    if (i == j)
-                    {
-                        correlation = 1.0; // Корреляция столбца с самим собой
-                    }
-                    else if (correlationResults.ContainsKey(rowColumn) && featureColumns.Contains(column))
-                    {
-                        correlation = correlationResults[rowColumn]; // Суммарная корреляция с признаками
-                    }
-                    else if (correlationResults.ContainsKey(column) && featureColumns.Contains(rowColumn))
-                    {
-                        correlation = correlationResults[column]; // Суммарная корреляция с признаками (симметрично)
-                    }
-                    correlationMatrixDataGridView.Rows[i].Cells[j].Value = correlation.ToString("F4");
+                    correlationMatrixDataGridView.Rows[row].Cells[column].Value = matrix[row, column];
                 }
             }
         }
+
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Вы уверены, что хотите выйти?", "Подтверждение",
-        MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Вы уверены, что хотите выйти?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 e.Cancel = true;
             }
         }
 
+        // FIX: This will throw NullReferenceException
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.form2.Show();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
