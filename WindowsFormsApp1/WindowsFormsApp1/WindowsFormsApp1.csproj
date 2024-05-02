@@ -124,6 +124,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScatterPlotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScatterPlotForm.Designer.cs">
+      <DependentUpon>ScatterPlotForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service\CorrelationAnalizer.cs" />
     <Compile Include="Service\Parser.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -145,6 +151,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScatterPlotForm.resx">
+      <DependentUpon>ScatterPlotForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

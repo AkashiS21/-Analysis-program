@@ -128,7 +128,27 @@ namespace WindowsFormsApp1
             form3.Show();
 
         }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // Получаем список выбранных столбцов
+            List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+            List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
 
+            // Создаем экземпляры Parser и CorrelationAnalyzer
+            Parser parser = new Parser();
+            CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
+
+            // Загружаем данные из CSV файла
+            DataTable data = parser.LoadDataFromCSV(filePath);
+
+            var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+            var x = 0;
+            var y = 1;
+
+            ScatterPlotForm scatterplotform = new ScatterPlotForm(data, x, y);
+            scatterplotform.Show();
+
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem != null)
