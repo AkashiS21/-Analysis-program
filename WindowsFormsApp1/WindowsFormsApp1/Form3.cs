@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using OxyPlot;
-using OxyPlot.Annotations;
-using OxyPlot.Axes;
-using OxyPlot.Series;
+using System.Drawing;
 using OxyPlot.WindowsForms;
 
 namespace WindowsFormsApp1
@@ -31,20 +28,83 @@ namespace WindowsFormsApp1
 
         public void SetCorrelationResults(double[,] matrix, List<string> featureColumns, List<string> targetColumns)
         {
-            
-            var model = new PlotModel { Title = "HeatMapSeries" };
-            model.Axes.Add(new LinearColorAxis { Position = AxisPosition.Right, Palette = OxyPalettes.Jet(500), HighColor = OxyColors.Gray, LowColor = OxyColors.Black });
+            var length = matrix.GetLength(0);
+            var labels = featureColumns.Concat(targetColumns).ToList();
 
-            var hms = new HeatMapSeries { X0 = 0, X1 = matrix.GetLength(0), Y0 = 0, Y1 = matrix.GetLength(0), Data = matrix, Interpolate = false };
+            foreach (var label in labels)
+            {
+                dataGridView.Columns.Add(label, label);
+            }
+            dataGridView.Rows.Add(length);
+
+            for (int row = 0; row < length; row++)
+            {
+                dataGridView.Rows[row].HeaderCell.Value = labels[row];
+                dataGridView.RowHeadersWidth = 250;
+
+                for (int col = 0; col < length; col++)
+                {
+                    var value = matrix[row, col];
+                    dataGridView.Rows[row].Cells[col].Value = value.ToString("F2");
+
+                    var style = new DataGridViewCellStyle()
+                    {
+                        BackColor = Color.FromArgb(
+                            red: (int)((value + 1) * 255.0 / 2.0),
+                            green: 0,
+                            blue: 255 - (int)((value + 1) * 255.0 / 2.0)
+                        ),
+                        ForeColor = Color.White,
+                        Alignment = DataGridViewContentAlignment.MiddleCenter,
+                    };
+
+                    dataGridView.Rows[row].Cells[col].Style = style;
+                }
+            }
+
+            /*var model = new PlotModel { Title = "HeatMapSeries" };
+            model.Axes.Add(new LinearColorAxis { Position = AxisPosition.Right, Palette = OxyPalettes.Jet(500), HighColor = OxyColors.Gray, LowColor = OxyColors.Black });
+            var categoryAxis = new CategoryAxis
+            {
+                Position = AxisPosition.Bottom,
+                MinorStep = 1,
+                ItemsSource = featureColumns,
+                LabelField = "Item1",
+                GapWidth = 0.5,
+                Minimum = -1
+            };
+            model.Axes.Add(categoryAxis);
+
+            var hms = new HeatMapSeries { X0 = 1, X1 = matrix.GetLength(0), Y0 = 1, Y1 = matrix.GetLength(0), Data = matrix, Interpolate = false };
             model.Series.Add(hms);
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
+                model.Annotations.Add(new TextAnnotation
+                {
+                    TextPosition = new DataPoint(allcolumns[row].Length * -0.04, row + 1),
+                    Text = allcolumns[row],
+                    StrokeThickness = 0
+                });
+                model.Annotations.Add(new TextAnnotation
+                {
+                    TextPosition = new DataPoint(row+1, allcolumns[row].Length * -0.075),
+                    Text = allcolumns[row],
+                    StrokeThickness = 0,
+                    TextRotation = -90
+                });
+
                 for (int column = 0; column < matrix.GetLength(0); column++)
                 {
-                    model.Annotations.Add(new TextAnnotation { TextPosition = new DataPoint(column,row), Text = matrix[row, column].ToString() });
+                    model.Annotations.Add(new TextAnnotation 
+         
+                    { 
+                     TextPosition = new DataPoint(column+1,row+0.75), 
+                     Text = matrix[row, column].ToString("F2"),
+                     StrokeThickness = 0
+                    });
                 }
             }
-            correlationPlotView.Model = model;
+            correlationPlotView.Model = model;*/
         }
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
@@ -79,6 +139,11 @@ namespace WindowsFormsApp1
         private void button1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridView.ClearSelection();
         }
     }
 }

@@ -28,35 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.correlationPlotView = new OxyPlot.WindowsForms.PlotView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // correlationPlotView
+            // dataGridView
             // 
-            this.correlationPlotView.Location = new System.Drawing.Point(26, 34);
-            this.correlationPlotView.Name = "correlationPlotView";
-            this.correlationPlotView.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.correlationPlotView.Size = new System.Drawing.Size(752, 348);
-            this.correlationPlotView.TabIndex = 1;
-            this.correlationPlotView.Text = "plotView1";
-            this.correlationPlotView.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.correlationPlotView.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.correlationPlotView.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            this.correlationPlotView.Click += new System.EventHandler(this.plotView1_Click);
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(800, 450);
+            this.dataGridView.TabIndex = 0;
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.correlationPlotView);
+            this.Controls.Add(this.dataGridView);
             this.Name = "Form3";
             this.Text = "Корреляция";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private OxyPlot.WindowsForms.PlotView correlationPlotView;
+
+        private System.Windows.Forms.DataGridView dataGridView;
     }
 }
