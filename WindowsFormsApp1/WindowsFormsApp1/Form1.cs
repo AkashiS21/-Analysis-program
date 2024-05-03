@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using WindowsFormsApp1.Properties;
+using WindowsFormsApp1.Service;
+using Microsoft.Office.Interop.Word;
+using System.Drawing.Text;
 
 
 
@@ -17,6 +20,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        private string filePath;
         public Form1()
         {
             InitializeComponent();
@@ -56,19 +60,24 @@ namespace WindowsFormsApp1
 
                 openFileDialog.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1; 
-                openFileDialog.RestoreDirectory = true; 
+                openFileDialog.RestoreDirectory = true;
 
-                
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     
 
                     string filePath = openFileDialog.FileName;
+                    this.filePath = filePath;
 
-                    Form2 form2 = new Form2(filePath,this);
+                    Parser parser = new Parser();    
+                    System.Data.DataTable data = parser.LoadDataFromCSV(filePath);
+                    dataGridView1.DataSource = data;
+
+                    /*Form2 form2 = new Form2(filePath,this);
                     form2.Owner = this;
                     form2.Show();
-                    this.Hide();
+                    this.Hide();*/
+
                 }
 
             }
@@ -124,6 +133,19 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Ошибка открытия документа: " + ex.Message);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dalee(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2(filePath,this);
+            form2.Owner = this;
+            form2.Show();
+            this.Hide();
         }
     }
 }
