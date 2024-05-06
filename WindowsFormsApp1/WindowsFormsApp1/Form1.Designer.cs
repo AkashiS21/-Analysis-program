@@ -44,9 +44,9 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(208)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(202, 12);
+            this.button1.Location = new System.Drawing.Point(196, 96);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(267, 60);
+            this.button1.Size = new System.Drawing.Size(258, 60);
             this.button1.TabIndex = 2;
             this.button1.Text = "Загрузить данные ";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,9 +55,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(2, 75);
+            this.label2.Location = new System.Drawing.Point(21, 170);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(665, 33);
+            this.label2.Size = new System.Drawing.Size(632, 33);
             this.label2.TabIndex = 4;
             this.label2.Text = "Обращаем ваше внимание, что для корректной работы приложения данные перед загрузк" +
     "ой должны быть нормализованы!";
@@ -66,7 +66,7 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(31, 394);
+            this.button2.Location = new System.Drawing.Point(0, -2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 37);
             this.button2.TabIndex = 5;
@@ -76,7 +76,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(202, 394);
+            this.button3.Location = new System.Drawing.Point(133, -2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(139, 37);
             this.button3.TabIndex = 6;
@@ -87,20 +87,22 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 128);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 206);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(601, 240);
+            this.dataGridView1.Size = new System.Drawing.Size(665, 237);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(505, 394);
+            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button4.Location = new System.Drawing.Point(269, -2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(127, 37);
+            this.button4.Size = new System.Drawing.Size(396, 37);
             this.button4.TabIndex = 8;
             this.button4.Text = "Далее";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.dalee);
             // 
             // Form1

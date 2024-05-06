@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
             InitializePlot();
 
-            richTextBox1.AppendText("one\ntwo\n\three");
         }
         private void InitializePlot()
         {

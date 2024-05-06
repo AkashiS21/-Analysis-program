@@ -61,6 +61,7 @@ namespace WindowsFormsApp1
                 foreach (string columnName in columnNames)
                 {
                     listBox1.Items.Add(columnName);
+                    listBox4.Items.Add(columnName);
                 }
             }
             catch (Exception ex)
@@ -109,10 +110,10 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click_1(object sender, EventArgs e)
         {
             // Получаем список выбранных столбцов
-            List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+            List<string> featureColumns = listBox5.Items.Cast<string>().ToList();
             List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
 
             // Создаем экземпляры Parser и CorrelationAnalyzer
@@ -131,7 +132,7 @@ namespace WindowsFormsApp1
         private void button8_Click(object sender, EventArgs e)
         {
             // Получаем список выбранных столбцов
-            List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+            List<string> featureColumns = listBox5.Items.Cast<string>().ToList();
             List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
 
             // Создаем экземпляры Parser и CorrelationAnalyzer
@@ -255,6 +256,119 @@ namespace WindowsFormsApp1
 
             //CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
             //Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+
+            //TODO сделать пейджи отдельно для графика и для матрицы
+            //TODO 2 пейдж матрица(корреляция только в матрице), элементы: 3 листа, стрелки, кнопки "параметры", "гитхаб", "построить матрицу", "сброс", "информация для пользователя", реализовать ограничение минимум 1 таргет
+            //TODO 1 пейдж график, элементы: 2 листа, таргета нет, ограничение на 2 параметра максимум. кнопки "гитхаб", "построить график", "сброс", "информация для пользователя"
+            // в форме 3 матрица сделать пояснения к ячейкам снизу либо в ячейках через меседжбокс
+            // реализовать полноэкранный режим на всех формах.
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedItem != null)
+            {
+                listBox4.Items.Add(listBox3.SelectedItem);
+                listBox3.Items.Remove(listBox3.SelectedItem);
+            }
+        }
+
+        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button13_Click_1(object sender, EventArgs e)
+        {
+            if (listBox4.SelectedItem != null)
+            {
+                listBox5.Items.Add(listBox4.SelectedItem);
+                listBox4.Items.Remove(listBox4.SelectedItem);
+            }
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            if (listBox4.SelectedItem != null)
+            {
+                listBox3.Items.Add(listBox4.SelectedItem);
+                listBox4.Items.Remove(listBox4.SelectedItem);
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (listBox5.SelectedItem != null)
+            {
+                listBox4.Items.Add(listBox5.SelectedItem);
+                listBox5.Items.Remove(listBox5.SelectedItem);
+            }
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            foreach (var item in listBox5.Items.Cast<string>().ToList())
+            {
+                listBox4.Items.Add(item);
+            }
+            listBox5.Items.Clear();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            foreach (var item in listBox4.Items.Cast<string>().ToList())
+            {
+                listBox5.Items.Add(item);
+            }
+            listBox4.Items.Clear();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            listBox5.Items.Clear();
+            listBox3.Items.Clear();
+            listBox4.Items.Clear();
+            string firstLine = File.ReadLines(filePath).First();
+            string[] columnNames = firstLine.Split(';');
+            foreach (string columnName in columnNames)
+            {
+                listBox4.Items.Add(columnName);
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            string wordFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Корреляция.docx";
+
+            try
+            {
+                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Open(wordFilePath);
+                wordApp.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка открытия документа: " + ex.Message);
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            string github = "Ссылка на проект на гитхабе:\n\n" +
+                    "https://github.com/AkashiS21/-Analysis-program\n";
+
+            MessageBox.Show(github, "GitHub", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
