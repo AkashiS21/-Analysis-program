@@ -62,6 +62,42 @@ namespace WindowsFormsApp1
                     dataGridView.Rows[row].Cells[col].Style = style;
                 }
             }
+            dataGridView.CellClick += (sender, e) =>
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    var selectedRowName = dataGridView.Rows[e.RowIndex].HeaderCell.Value.ToString();
+                    var selectedColumnName = dataGridView.Columns[e.ColumnIndex].HeaderText;
+                    var selectedCellValue = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); // Преобразование в строку
+                    string dependencyValue = null;
+
+                    if (double.TryParse(selectedCellValue, out double cellValue)) // Попытка преобразования в double
+                    {
+                        var dependency = $"Значения параметров: {selectedRowName} -> {selectedColumnName}";
+                        if (cellValue > 0 && cellValue <= 0.50)
+                        {
+                            dependencyValue = "Положительную зависимость";
+                        }
+                        else if (cellValue > 0.50 && cellValue < 1)
+                        {
+                            dependencyValue = "Сильную зависимость";
+                        }
+                        else if (cellValue < 0 && cellValue >= -0.50)
+                        {
+                            dependencyValue = "Слабую зависимость";
+                        }
+                        else if (cellValue < -0.50 && cellValue >= -1)
+                        {
+                            dependencyValue = "Отсутствие зависимости";
+                        }
+                        MessageBox.Show(dependency + " имеют " + dependencyValue);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Невозможно преобразовать значение ячейки в число.");
+                    }
+                }
+            };
 
             /*var model = new PlotModel { Title = "HeatMapSeries" };
             model.Axes.Add(new LinearColorAxis { Position = AxisPosition.Right, Palette = OxyPalettes.Jet(500), HighColor = OxyColors.Gray, LowColor = OxyColors.Black });
