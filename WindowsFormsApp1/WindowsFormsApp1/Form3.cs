@@ -68,10 +68,10 @@ namespace WindowsFormsApp1
                 {
                     var selectedRowName = dataGridView.Rows[e.RowIndex].HeaderCell.Value.ToString();
                     var selectedColumnName = dataGridView.Columns[e.ColumnIndex].HeaderText;
-                    var selectedCellValue = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); // Преобразование в строку
+                    var selectedCellValue = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); 
                     string dependencyValue = null;
 
-                    if (double.TryParse(selectedCellValue, out double cellValue)) // Попытка преобразования в double
+                    if (double.TryParse(selectedCellValue, out double cellValue)) 
                     {
                         var dependency = $"Значения параметров: {selectedRowName} -> {selectedColumnName}";
                         if (cellValue > 0 && cellValue <= 0.50)
