@@ -112,43 +112,55 @@ namespace WindowsFormsApp1
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            // Получаем список выбранных столбцов
-            List<string> featureColumns = listBox5.Items.Cast<string>().ToList();
-            List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
+            if (listBox5.Items.Count == 0 || listBox3.Items.Count == 0)
+            {
+                MessageBox.Show("Выбирите хотя бы один параметр и одну цель <3", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                List<string> featureColumns = listBox5.Items.Cast<string>().ToList();
+                List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
 
-            // Создаем экземпляры Parser и CorrelationAnalyzer
-            Parser parser = new Parser();
-            CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
 
-            // Загружаем данные из CSV файла
-            DataTable data = parser.LoadDataFromCSV(filePath);
+                Parser parser = new Parser();
+                CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
 
-            var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
-            Form3 form3 = new Form3();
-            form3.SetCorrelationResults(matrix, featureColumns, targetColumns);
-            form3.Show();
+
+                DataTable data = parser.LoadDataFromCSV(filePath);
+
+                var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+                Form3 form3 = new Form3();
+                form3.SetCorrelationResults(matrix, featureColumns, targetColumns);
+                form3.Show();
+            }
+            
 
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            // Получаем список выбранных столбцов
-            List<string> featureColumns = listBox5.Items.Cast<string>().ToList();
-            List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
+            if (listBox2.Items.Count < 2) 
+            {
+                MessageBox.Show("Количество параметров должно быть не меньше двух <3","Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                List<string> featureColumns = listBox5.Items.Cast<string>().ToList();
+                List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
 
-            // Создаем экземпляры Parser и CorrelationAnalyzer
-            Parser parser = new Parser();
-            CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
 
-            // Загружаем данные из CSV файла
-            DataTable data = parser.LoadDataFromCSV(filePath);
+                Parser parser = new Parser();
+                CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
 
-            var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
-            var x = 0;
-            var y = 1;
 
-            ScatterPlotForm scatterplotform = new ScatterPlotForm(data, x, y);
-            scatterplotform.Show();
+                DataTable data = parser.LoadDataFromCSV(filePath);
 
+                var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+                var x = 0;
+                var y = 1;
+
+                ScatterPlotForm scatterplotform = new ScatterPlotForm(data, x, y);
+                scatterplotform.Show();
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {

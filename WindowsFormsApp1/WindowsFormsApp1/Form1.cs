@@ -120,13 +120,13 @@ namespace WindowsFormsApp1
 
             try
             {
-                // Создаем объект Word Application
+                
                 Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
 
-                // Открываем документ
+                
                 Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Open(wordFilePath);
 
-                // Делаем Word видимым (необязательно)
+                
                 wordApp.Visible = true;
             }
             catch (Exception ex)
