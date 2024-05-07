@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
 using OxyPlot.WindowsForms;
+using OfficeOpenXml;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -68,15 +70,15 @@ namespace WindowsFormsApp1
                 {
                     var selectedRowName = dataGridView.Rows[e.RowIndex].HeaderCell.Value.ToString();
                     var selectedColumnName = dataGridView.Columns[e.ColumnIndex].HeaderText;
-                    var selectedCellValue = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); 
+                    var selectedCellValue = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                     string dependencyValue = null;
 
-                    if (double.TryParse(selectedCellValue, out double cellValue)) 
+                    if (double.TryParse(selectedCellValue, out double cellValue))
                     {
                         var dependency = $"У параметров: {selectedRowName} -> {selectedColumnName}";
-                        if (cellValue > 0 && cellValue <= 0.40)
+                        if (cellValue > 0 && cellValue <= 0.20)
                         {
-                            dependencyValue = " - небольшая зависимость друг от друга";
+                            dependencyValue = " - слабая положительная зависимость";
                         }
                         else if (cellValue > 0.40 && cellValue < 0.70)
                         {
@@ -149,6 +151,59 @@ namespace WindowsFormsApp1
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             dataGridView.ClearSelection();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Файлы Excel (*.csv)|*.csv";
+            saveFileDialog.Title = "Сохранить данные в Excel";
+            saveFileDialog.ShowDialog();
+
+            
+            if (saveFileDialog.FileName != "")
+            {
+                try
+                {
+                    
+                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    {
+                        
+                        foreach (DataGridViewColumn column in dataGridView.Columns)
+                        {
+                            writer.Write(column.HeaderText + ",");
+                        }
+                        writer.WriteLine();
+
+                        
+                        foreach (DataGridViewRow row in dataGridView.Rows)
+                        {
+                            foreach (DataGridViewCell cell in row.Cells)
+                            {
+                                writer.Write(cell.Value + ",");
+                            }
+                            writer.WriteLine();
+                        }
+                    }
+
+                    MessageBox.Show("Данные успешно сохранены в файл Excel.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка при сохранении файла: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

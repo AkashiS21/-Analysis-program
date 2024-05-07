@@ -138,9 +138,9 @@ namespace WindowsFormsApp1
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            if (listBox2.Items.Count < 2) 
+            if (listBox2.Items.Count != 2) 
             {
-                MessageBox.Show("Количество параметров должно быть не меньше двух <3","Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Количество параметров должно быть  равное 2 ","Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
