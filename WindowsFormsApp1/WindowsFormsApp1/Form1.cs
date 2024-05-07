@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
 
             try
             {
-                // Открыть PDF-файл
+                
                 System.Diagnostics.Process.Start(pdfFilePath);
             }
             catch (Exception ex)
@@ -136,10 +136,17 @@ namespace WindowsFormsApp1
 
         private void dalee(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2(filePath,this);
-            form2.Owner = this;
-            form2.Show();
-            this.Hide();
+            if (dataGridView1.Rows.Count > 0 && dataGridView1.Columns.Count > 0)
+            {
+                Form2 form2 = new Form2(filePath, this);
+                form2.Owner = this;
+                form2.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста загрузите валидный датасет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
