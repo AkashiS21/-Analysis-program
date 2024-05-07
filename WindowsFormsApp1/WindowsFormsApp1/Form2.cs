@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
         {
             if (listBox5.Items.Count == 0 || listBox3.Items.Count == 0)
             {
-                MessageBox.Show("Выбирите хотя бы один параметр и одну цель <3", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Выберите хотя бы один параметр и одну цель <3", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -144,8 +144,8 @@ namespace WindowsFormsApp1
             }
             else
             {
-                List<string> featureColumns = listBox5.Items.Cast<string>().ToList();
-                List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
+                List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+                List<string> targetColumns = listBox2.Items.Cast<string>().ToList();
 
 
                 Parser parser = new Parser();
@@ -155,9 +155,8 @@ namespace WindowsFormsApp1
                 DataTable data = parser.LoadDataFromCSV(filePath);
 
                 var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
-                var x = 0;
-                var y = 1;
-
+                int x = data.Columns.IndexOf(featureColumns[0]);
+                int y = data.Columns.IndexOf(targetColumns[1]);
                 ScatterPlotForm scatterplotform = new ScatterPlotForm(data, x, y);
                 scatterplotform.Show();
             }

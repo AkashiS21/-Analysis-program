@@ -76,33 +76,53 @@ namespace WindowsFormsApp1
                     if (double.TryParse(selectedCellValue, out double cellValue))
                     {
                         var dependency = $"У параметров: {selectedRowName} -> {selectedColumnName}";
-                        if (cellValue > 0 && cellValue <= 0.20)
+                        if (cellValue > 0 && cellValue < 0.20)
                         {
-                            dependencyValue = " - слабая положительная зависимость";
+                            dependencyValue = " - очень слабая зависимость";
                         }
-                        else if (cellValue > 0.40 && cellValue < 0.70)
+                        else if (cellValue >= 0.20 && cellValue < 0.50)
                         {
-                            dependencyValue = " - довольно высокий показатель зависимости друг от друга";
+                            dependencyValue = " - слабая зависимость";
                         }
-                        else if (cellValue > 0.70 && cellValue < 1)
+                        else if (cellValue >= 0.50 && cellValue < 0.70)
                         {
-                            dependencyValue = " - очень высокий показатель зависимости друг от друга";
+                            dependencyValue = " - средняя зависимость";
                         }
-                        else if (cellValue < 0 && cellValue >= -0.50)
+                        else if (cellValue >= 0.70 && cellValue < 0.90)
                         {
-                            dependencyValue = " -слабая зависимость";
+                            dependencyValue = " - высокая зависимость";
                         }
-                        else if (cellValue < -0.50 && cellValue >= -1)
+                        else if (cellValue >= 0.90 && cellValue < 1)
                         {
-                            dependencyValue = " - зависимость практически отсутствует";
+                            dependencyValue = " - очень высокая зависимость";
+                        }
+                        else if (cellValue < 0 && cellValue >= -0.20)
+                        {
+                            dependencyValue = " - очень слабая отрицательная зависимость";
+                        }
+                        else if (cellValue < -0.20 && cellValue >= -0.50)
+                        {
+                            dependencyValue = " - слабая отрицательная зависимость";
+                        }
+                        else if (cellValue < -0.50 && cellValue >= -0.70)
+                        {
+                            dependencyValue = " - средняя отрицательная зависимость";
+                        }
+                        else if (cellValue < -0.70 && cellValue >= -0.90)
+                        {
+                            dependencyValue = " - высокая отрицательная зависимость";
+                        }
+                        else if (cellValue < -0.9 && cellValue > -1)
+                        {
+                            dependencyValue = " - очень высокая отрицательная зависимость";
                         }
                         else if (cellValue == -1)
                         {
-                            dependencyValue = " - полное отсутствие зависимости";
+                            dependencyValue = " - абсолютная отрицательная зависимость";
                         }
                         else if (cellValue == 1)
                         {
-                            dependencyValue = " - абсолютная зависимость";
+                            dependencyValue = " - абсолютная положительная зависимость";
                         }
                         MessageBox.Show(dependency + dependencyValue);
                     }
