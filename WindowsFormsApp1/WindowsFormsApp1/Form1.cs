@@ -116,18 +116,12 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string wordFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Справка.docx";
+            string pdfFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Руководство главное окно.pdf";
 
             try
             {
-                
-                Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
-
-                
-                Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Open(wordFilePath);
-
-                
-                wordApp.Visible = true;
+                // Открыть PDF-файл
+                System.Diagnostics.Process.Start(pdfFilePath);
             }
             catch (Exception ex)
             {

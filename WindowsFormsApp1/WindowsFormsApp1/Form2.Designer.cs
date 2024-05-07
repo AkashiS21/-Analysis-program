@@ -41,25 +41,25 @@
             this.button8 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.listBox5 = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox4 = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -90,7 +90,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(117, 40);
             this.button5.TabIndex = 12;
-            this.button5.Text = "Корреляция";
+            this.button5.Text = "Руководство пользователя";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -110,7 +110,7 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(141, 44);
             this.button10.TabIndex = 18;
-            this.button10.Text = "Параметры";
+            this.button10.Text = "Настройки";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -203,6 +203,15 @@
             this.tabPage1.Text = "Graphics";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(20, 100);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(198, 212);
+            this.listBox1.TabIndex = 4;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.button18);
@@ -230,149 +239,44 @@
             this.tabPage2.Text = "Matrix";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // button18
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(20, 100);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(198, 212);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
+            this.button18.Location = new System.Drawing.Point(213, 398);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(119, 40);
+            this.button18.TabIndex = 36;
+            this.button18.Text = "Руководство пользователя";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
-            // listBox4
+            // button17
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(44, 85);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(216, 264);
-            this.listBox4.TabIndex = 5;
-            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
+            this.button17.Location = new System.Drawing.Point(44, 398);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(124, 40);
+            this.button17.TabIndex = 35;
+            this.button17.Text = "Сброс";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
-            // label2
+            // button16
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(50, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 36);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Выберите параметры для построения матрицы:";
+            this.button16.Location = new System.Drawing.Point(630, 166);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(141, 47);
+            this.button16.TabIndex = 34;
+            this.button16.Text = "GitHub";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // label5
+            // button15
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(353, 44);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(216, 38);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Переменные";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // listBox5
-            // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(353, 85);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(216, 134);
-            this.listBox5.TabIndex = 22;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(353, 245);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(216, 32);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Цель";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_right_arrow_271228;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(294, 280);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 22);
-            this.button4.TabIndex = 25;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.Transparent;
-            this.button12.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_arrowhead_thin_outline_to_the_left_32542;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(294, 324);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(28, 25);
-            this.button12.TabIndex = 26;
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click_1);
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.Transparent;
-            this.button11.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.lefta;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(294, 166);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(38, 23);
-            this.button11.TabIndex = 27;
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.right_svg;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(294, 113);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 25);
-            this.button1.TabIndex = 28;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(630, 245);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(141, 47);
-            this.button6.TabIndex = 29;
-            this.button6.Text = "Построить матрицу";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(353, 280);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(216, 69);
-            this.listBox3.TabIndex = 30;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.Transparent;
-            this.button13.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_right_arrow_271228;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(294, 85);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(28, 22);
-            this.button13.TabIndex = 31;
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click_1);
+            this.button15.Location = new System.Drawing.Point(630, 85);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(141, 53);
+            this.button15.TabIndex = 33;
+            this.button15.Text = "Настройки";
+            this.button15.UseVisualStyleBackColor = true;
             // 
             // button14
             // 
@@ -389,44 +293,140 @@
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // button15
+            // button13
             // 
-            this.button15.Location = new System.Drawing.Point(630, 85);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(141, 53);
-            this.button15.TabIndex = 33;
-            this.button15.Text = "Параметры";
-            this.button15.UseVisualStyleBackColor = true;
+            this.button13.BackColor = System.Drawing.Color.Transparent;
+            this.button13.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_right_arrow_271228;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Location = new System.Drawing.Point(294, 85);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(28, 22);
+            this.button13.TabIndex = 31;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click_1);
             // 
-            // button16
+            // listBox3
             // 
-            this.button16.Location = new System.Drawing.Point(630, 166);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(141, 47);
-            this.button16.TabIndex = 34;
-            this.button16.Text = "GitHub";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(353, 280);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(216, 69);
+            this.listBox3.TabIndex = 30;
             // 
-            // button17
+            // button6
             // 
-            this.button17.Location = new System.Drawing.Point(44, 398);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(124, 40);
-            this.button17.TabIndex = 35;
-            this.button17.Text = "Сброс";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.button6.Location = new System.Drawing.Point(630, 245);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(141, 47);
+            this.button6.TabIndex = 29;
+            this.button6.Text = "Построить матрицу";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
-            // button18
+            // button1
             // 
-            this.button18.Location = new System.Drawing.Point(213, 398);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(119, 40);
-            this.button18.TabIndex = 36;
-            this.button18.Text = "Корреляция";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.right_svg;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(294, 113);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(38, 25);
+            this.button1.TabIndex = 28;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.Transparent;
+            this.button11.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.lefta;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Location = new System.Drawing.Point(294, 166);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(38, 23);
+            this.button11.TabIndex = 27;
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Transparent;
+            this.button12.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_arrowhead_thin_outline_to_the_left_32542;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Location = new System.Drawing.Point(294, 324);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(28, 25);
+            this.button12.TabIndex = 26;
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click_1);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_right_arrow_271228;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(294, 280);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(28, 22);
+            this.button4.TabIndex = 25;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(353, 245);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(216, 32);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Цель";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(353, 85);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(216, 134);
+            this.listBox5.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(353, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(216, 38);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "Переменные";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(50, 35);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(219, 36);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Выберите параметры для построения матрицы:";
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(44, 85);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(216, 264);
+            this.listBox4.TabIndex = 5;
+            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // Form2
             // 

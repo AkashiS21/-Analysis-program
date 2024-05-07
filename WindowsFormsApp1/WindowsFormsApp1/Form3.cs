@@ -73,24 +73,36 @@ namespace WindowsFormsApp1
 
                     if (double.TryParse(selectedCellValue, out double cellValue)) 
                     {
-                        var dependency = $"Значения параметров: {selectedRowName} -> {selectedColumnName}";
-                        if (cellValue > 0 && cellValue <= 0.50)
+                        var dependency = $"У параметров: {selectedRowName} -> {selectedColumnName}";
+                        if (cellValue > 0 && cellValue <= 0.40)
                         {
-                            dependencyValue = "Положительную зависимость";
+                            dependencyValue = " - небольшая зависимость друг от друга";
                         }
-                        else if (cellValue > 0.50 && cellValue < 1)
+                        else if (cellValue > 0.40 && cellValue < 0.70)
                         {
-                            dependencyValue = "Сильную зависимость";
+                            dependencyValue = " - довольно высокий показатель зависимости друг от друга";
+                        }
+                        else if (cellValue > 0.70 && cellValue < 1)
+                        {
+                            dependencyValue = " - очень высокий показатель зависимости друг от друга";
                         }
                         else if (cellValue < 0 && cellValue >= -0.50)
                         {
-                            dependencyValue = "Слабую зависимость";
+                            dependencyValue = " -слабая зависимость";
                         }
                         else if (cellValue < -0.50 && cellValue >= -1)
                         {
-                            dependencyValue = "Отсутствие зависимости";
+                            dependencyValue = " - зависимость практически отсутствует";
                         }
-                        MessageBox.Show(dependency + " имеют " + dependencyValue);
+                        else if (cellValue == -1)
+                        {
+                            dependencyValue = " - полное отсутствие зависимости";
+                        }
+                        else if (cellValue == 1)
+                        {
+                            dependencyValue = " - абсолютная зависимость";
+                        }
+                        MessageBox.Show(dependency + dependencyValue);
                     }
                     else
                     {
@@ -98,50 +110,6 @@ namespace WindowsFormsApp1
                     }
                 }
             };
-
-            /*var model = new PlotModel { Title = "HeatMapSeries" };
-            model.Axes.Add(new LinearColorAxis { Position = AxisPosition.Right, Palette = OxyPalettes.Jet(500), HighColor = OxyColors.Gray, LowColor = OxyColors.Black });
-            var categoryAxis = new CategoryAxis
-            {
-                Position = AxisPosition.Bottom,
-                MinorStep = 1,
-                ItemsSource = featureColumns,
-                LabelField = "Item1",
-                GapWidth = 0.5,
-                Minimum = -1
-            };
-            model.Axes.Add(categoryAxis);
-
-            var hms = new HeatMapSeries { X0 = 1, X1 = matrix.GetLength(0), Y0 = 1, Y1 = matrix.GetLength(0), Data = matrix, Interpolate = false };
-            model.Series.Add(hms);
-            for (int row = 0; row < matrix.GetLength(0); row++)
-            {
-                model.Annotations.Add(new TextAnnotation
-                {
-                    TextPosition = new DataPoint(allcolumns[row].Length * -0.04, row + 1),
-                    Text = allcolumns[row],
-                    StrokeThickness = 0
-                });
-                model.Annotations.Add(new TextAnnotation
-                {
-                    TextPosition = new DataPoint(row+1, allcolumns[row].Length * -0.075),
-                    Text = allcolumns[row],
-                    StrokeThickness = 0,
-                    TextRotation = -90
-                });
-
-                for (int column = 0; column < matrix.GetLength(0); column++)
-                {
-                    model.Annotations.Add(new TextAnnotation 
-         
-                    { 
-                     TextPosition = new DataPoint(column+1,row+0.75), 
-                     Text = matrix[row, column].ToString("F2"),
-                     StrokeThickness = 0
-                    });
-                }
-            }
-            correlationPlotView.Model = model;*/
         }
 
         private void Form3_FormClosing(object sender, FormClosingEventArgs e)
