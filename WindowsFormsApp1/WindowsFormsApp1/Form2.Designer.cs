@@ -41,6 +41,8 @@
             this.button8 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button18 = new System.Windows.Forms.Button();
@@ -60,8 +62,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox4 = new System.Windows.Forms.ListBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -108,9 +109,9 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(614, 384);
+            this.button10.Location = new System.Drawing.Point(479, 397);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(141, 44);
+            this.button10.Size = new System.Drawing.Size(136, 44);
             this.button10.TabIndex = 18;
             this.button10.Text = "Настройки";
             this.button10.UseVisualStyleBackColor = true;
@@ -156,7 +157,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(633, 252);
+            this.button7.Location = new System.Drawing.Point(643, 397);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(132, 43);
             this.button7.TabIndex = 24;
@@ -166,7 +167,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(633, 175);
+            this.button8.Location = new System.Drawing.Point(643, 196);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(132, 48);
             this.button8.TabIndex = 25;
@@ -186,6 +187,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button21);
             this.tabPage1.Controls.Add(this.button20);
             this.tabPage1.Controls.Add(this.button19);
             this.tabPage1.Controls.Add(this.listBox1);
@@ -206,6 +208,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Graphics";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(643, 128);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(130, 43);
+            this.button20.TabIndex = 27;
+            this.button20.Text = "Квантильная диаграмма";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(641, 60);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(132, 42);
+            this.button19.TabIndex = 26;
+            this.button19.Text = "Диаграмма распределения";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // listBox1
             // 
@@ -432,25 +454,15 @@
             this.listBox4.TabIndex = 5;
             this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
-            // button19
+            // button21
             // 
-            this.button19.Location = new System.Drawing.Point(633, 48);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(132, 48);
-            this.button19.TabIndex = 26;
-            this.button19.Text = "Диаграмма распределения";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.Location = new System.Drawing.Point(633, 115);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(130, 43);
-            this.button20.TabIndex = 27;
-            this.button20.Text = "Квантильная диаграмма";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.button21.Location = new System.Drawing.Point(643, 270);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(132, 44);
+            this.button21.TabIndex = 28;
+            this.button21.Text = "Общий анализ";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // Form2
             // 
@@ -506,5 +518,6 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button21;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using OxyPlot.Series;
 using OxyPlot.WindowsForms;
 using OxyPlot;
+using OxyPlot.Annotations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,9 +23,9 @@ namespace WindowsFormsApp1
         private string filePath;
         private Form1 form1;
         private Form3 form3;
-        
 
-        public Form2(string filePath,Form1 form1)
+
+        public Form2(string filePath, Form1 form1)
         {
             this.form1 = form1;
             this.filePath = filePath;
@@ -40,14 +41,14 @@ namespace WindowsFormsApp1
             {
                 e.Cancel = true;
             }
-            
-            
+
+
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.form1.Show();
-                
+
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -59,9 +60,9 @@ namespace WindowsFormsApp1
         {
             try
             {
-                
+
                 string firstLine = File.ReadLines(filePath).First();
-                
+
                 string[] columnNames = firstLine.Split(';');
                 foreach (string columnName in columnNames)
                 {
@@ -138,14 +139,14 @@ namespace WindowsFormsApp1
                 form3.SetCorrelationResults(matrix, featureColumns, targetColumns);
                 form3.Show();
             }
-            
+
 
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            if (listBox2.Items.Count != 2) 
+            if (listBox2.Items.Count != 2)
             {
-                MessageBox.Show("Количество параметров должно быть  равное 2 ","Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Количество параметров должно быть  равное 2 ", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -167,6 +168,7 @@ namespace WindowsFormsApp1
                 scatterplotform.Show();
             }
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem != null)
@@ -388,13 +390,13 @@ namespace WindowsFormsApp1
         private PlotModel CreateHistogram(List<double> data)
         {
             var model = new PlotModel { Title = "Диаграмма распределения" };
-            var histogramSeries = new HistogramSeries { FillColor = OxyColor.FromRgb(176, 212,255),StrokeThickness = 1};
+            var histogramSeries = new HistogramSeries { FillColor = OxyColor.FromRgb(176, 212, 255), StrokeThickness = 1 };
 
             // Определение интервалов гистограммы
             int binCount = 9;
             double min = data.Min();
             double max = data.Max();
-            double binWidth = (max-min) / binCount; // Ширина интервала
+            double binWidth = (max - min) / binCount; // Ширина интервала
 
             // Добавление данных в гистограмму
             for (int i = 0; i < binCount; i++)
@@ -402,8 +404,8 @@ namespace WindowsFormsApp1
                 double binStart = min + i * binWidth;
                 double binEnd = binStart + binWidth;
                 int count = data.Count(x => x >= binStart && x < binEnd);
-                double area = (binEnd-binStart) * count;
-                histogramSeries.Items.Add(new HistogramItem(binStart, binEnd, area, count) );
+                double area = (binEnd - binStart) * count;
+                histogramSeries.Items.Add(new HistogramItem(binStart, binEnd, area, count));
             }
 
             model.Series.Add(histogramSeries);
@@ -494,7 +496,7 @@ namespace WindowsFormsApp1
             }
 
             // Создание и отображение квантильной диаграммы
-            PlotModel model = CreateQuantilePlot(columnData);           
+            PlotModel model = CreateQuantilePlot(columnData);
             ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
             scatterplotform.Show();
         }
@@ -513,8 +515,8 @@ namespace WindowsFormsApp1
 
             for (var i = 0; i < data.Rows.Count; i++)
             {
-                var xOffset = double.Parse(data.Rows[i][x].ToString(), NumberStyles.Any, CultureInfo.InvariantCulture);
-                var yOffset = double.Parse(data.Rows[i][y].ToString(), NumberStyles.Any, CultureInfo.InvariantCulture);
+                var xOffset = double.Parse(data.Rows[i][x].ToString());
+                var yOffset = double.Parse(data.Rows[i][y].ToString());
 
                 scatterSeries.Points.Add(new ScatterPoint(xOffset, yOffset));
             }
@@ -534,7 +536,105 @@ namespace WindowsFormsApp1
             });
 
             return model;
-            
+
+        }
+        private PlotModel CreateScatterPlotone(DataTable data, int x)
+        {
+            var model = new PlotModel();
+
+            var xColumn = data.Columns[x];
+
+            var series = new LineSeries
+            {
+                MarkerType = MarkerType.Circle,
+                MarkerFill = OxyColor.FromRgb(176, 212, 255),
+            };
+
+            var list = Enumerable.Range(0, data.Rows.Count)
+                .Select(i => double.Parse(data.Rows[i][x].ToString()))
+                .ToList();
+
+            var maxIndex = list.IndexOf(list.Max());
+
+            var middle = list[maxIndex];
+            var left = list.Take(maxIndex).OrderBy(v => v);
+            var right = list.Skip(maxIndex + 1).OrderByDescending(v => v);
+
+            var items = left.Concat(new[] { middle }).Concat(right).ToList();
+
+            for (var i = 0; i < data.Rows.Count; i++)
+            {
+                series.Points.Add(new DataPoint(i, items[i]));
+            }
+
+            var average = items.Last(v => v >= items.Average());
+            var averageIndex = items.IndexOf(average);
+            model.Annotations.Add(CreateLine(OxyColors.Green, averageIndex, "Average"));
+
+            var sorted = list.OrderBy(v => v).ToList();
+
+            var median = sorted[sorted.Count / 2];
+            var medianIndex = items.IndexOf(median);
+            model.Annotations.Add(CreateLine(OxyColors.Red, medianIndex, "Median"));
+
+            model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Min()), "Min"));
+            model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Max()), "Max"));
+
+            model.Annotations.Add(new LineAnnotation
+            {
+                StrokeThickness = 1,
+                Color = OxyColors.Black,
+                LineStyle = LineStyle.Solid,
+                X = 0
+            });
+
+            model.Series.Add(series);
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = xColumn.ColumnName,
+                Position = AxisPosition.Left,
+            });
+
+            return model;
+        }
+
+        private LineAnnotation CreateLine(OxyColor color, double x, string text)
+        {
+            return new LineAnnotation()
+            {
+                StrokeThickness = 2,
+                Color = color,
+                Type = LineAnnotationType.Vertical,
+                X = x,
+                Y = 0,
+                Text = text,
+            };
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            if (listBox2.Items.Count != 1)
+            {
+                MessageBox.Show("Количество параметров должно быть  равное 1 ", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
+                List<string> targetColumns = listBox2.Items.Cast<string>().ToList();
+
+
+                Parser parser = new Parser();
+                CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
+
+
+                DataTable data = parser.LoadDataFromCSV(filePath);
+
+                var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
+                int x = data.Columns.IndexOf(featureColumns[0]);
+                var model = CreateScatterPlotone(data, x);
+                ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
+                scatterplotform.Show();
+            }
         }
     }
 }
