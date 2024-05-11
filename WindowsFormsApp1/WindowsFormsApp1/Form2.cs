@@ -388,7 +388,7 @@ namespace WindowsFormsApp1
         private PlotModel CreateHistogram(List<double> data)
         {
             var model = new PlotModel { Title = "Диаграмма распределения" };
-            var histogramSeries = new HistogramSeries { FillColor = OxyColors.Blue };
+            var histogramSeries = new HistogramSeries { FillColor = OxyColor.FromRgb(176, 212,255),StrokeThickness = 1};
 
             // Определение интервалов гистограммы
             int binCount = 9;
@@ -440,7 +440,7 @@ namespace WindowsFormsApp1
             }
 
             // Создание и отображение диаграммы распределения
-        var model = CreateHistogram(columnData);
+            var model = CreateHistogram(columnData);
             ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
             scatterplotform.Show();
         }
@@ -508,7 +508,7 @@ namespace WindowsFormsApp1
             var scatterSeries = new ScatterSeries
             {
                 MarkerType = MarkerType.Circle,
-                MarkerFill = OxyColors.Blue,
+                MarkerFill = OxyColor.FromRgb(176, 212, 255),
             };
 
             for (var i = 0; i < data.Rows.Count; i++)

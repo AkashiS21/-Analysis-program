@@ -35,21 +35,24 @@
             // 
             this.plotView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plotView1.Location = new System.Drawing.Point(0, 0);
+            this.plotView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.plotView1.Name = "plotView1";
             this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView1.Size = new System.Drawing.Size(800, 450);
+            this.plotView1.Size = new System.Drawing.Size(1200, 692);
             this.plotView1.TabIndex = 0;
             this.plotView1.Text = "plotView1";
             this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.plotView1.Click += new System.EventHandler(this.plotView1_Click);
             // 
             // ScatterPlotForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.plotView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ScatterPlotForm";
             this.Text = "ScatterPlotForm";
             this.ResumeLayout(false);

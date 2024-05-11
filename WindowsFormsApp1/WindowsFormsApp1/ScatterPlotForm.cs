@@ -15,5 +15,10 @@ namespace WindowsFormsApp1
             InitializeComponent();
             plotView1.Model = model;
         }
+
+        private void plotView1_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
