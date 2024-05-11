@@ -60,6 +60,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox4 = new System.Windows.Forms.ListBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -68,16 +70,16 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(302, 100);
+            this.listBox2.Location = new System.Drawing.Point(306, 89);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(209, 212);
+            this.listBox2.Size = new System.Drawing.Size(205, 173);
             this.listBox2.TabIndex = 7;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged_1);
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(17, 48);
+            this.label1.Location = new System.Drawing.Point(17, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(201, 49);
             this.label1.TabIndex = 8;
@@ -106,7 +108,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(610, 100);
+            this.button10.Location = new System.Drawing.Point(614, 384);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(141, 44);
             this.button10.TabIndex = 18;
@@ -131,7 +133,7 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(246, 286);
+            this.button3.Location = new System.Drawing.Point(246, 236);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(28, 26);
             this.button3.TabIndex = 6;
@@ -154,9 +156,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(610, 185);
+            this.button7.Location = new System.Drawing.Point(633, 252);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(141, 45);
+            this.button7.Size = new System.Drawing.Size(132, 43);
             this.button7.TabIndex = 24;
             this.button7.Text = "GitHub";
             this.button7.UseVisualStyleBackColor = true;
@@ -164,11 +166,11 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(610, 266);
+            this.button8.Location = new System.Drawing.Point(633, 175);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(141, 46);
+            this.button8.Size = new System.Drawing.Size(132, 48);
             this.button8.TabIndex = 25;
-            this.button8.Text = "Построить график рассеяния";
+            this.button8.Text = "График рассеяния";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -184,6 +186,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button20);
+            this.tabPage1.Controls.Add(this.button19);
             this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.label1);
@@ -206,9 +210,9 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(20, 100);
+            this.listBox1.Location = new System.Drawing.Point(20, 89);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(198, 212);
+            this.listBox1.Size = new System.Drawing.Size(198, 173);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged_1);
             // 
@@ -428,6 +432,26 @@
             this.listBox4.TabIndex = 5;
             this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(633, 48);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(132, 48);
+            this.button19.TabIndex = 26;
+            this.button19.Text = "Диаграмма распределения";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(633, 115);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(130, 43);
+            this.button20.TabIndex = 27;
+            this.button20.Text = "Квантильная диаграмма";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,5 +504,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
     }
 }

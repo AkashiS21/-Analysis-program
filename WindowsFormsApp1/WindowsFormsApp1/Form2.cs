@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OxyPlot.Series;
+using OxyPlot.WindowsForms;
+using OxyPlot;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Service;
+using OxyPlot.Axes;
+using System.Globalization;
 
 namespace WindowsFormsApp1
 {
@@ -157,7 +162,8 @@ namespace WindowsFormsApp1
                 var matrix = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
                 int x = data.Columns.IndexOf(featureColumns[0]);
                 int y = data.Columns.IndexOf(targetColumns[1]);
-                ScatterPlotForm scatterplotform = new ScatterPlotForm(data, x, y);
+                var model = CreateScatterPlot(data, x, y);
+                ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
                 scatterplotform.Show();
             }
         }
@@ -243,7 +249,7 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string pdfFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Руководство корреляция.pdf";
+            string pdfFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\параметры.pdf";
 
             try
             {
@@ -378,6 +384,157 @@ namespace WindowsFormsApp1
                     "https://github.com/AkashiS21/-Analysis-program\n";
 
             MessageBox.Show(github, "GitHub", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private PlotModel CreateHistogram(List<double> data)
+        {
+            var model = new PlotModel { Title = "Диаграмма распределения" };
+            var histogramSeries = new HistogramSeries { FillColor = OxyColors.Blue };
+
+            // Определение интервалов гистограммы
+            int binCount = 9;
+            double min = data.Min();
+            double max = data.Max();
+            double binWidth = (max-min) / binCount; // Ширина интервала
+
+            // Добавление данных в гистограмму
+            for (int i = 0; i < binCount; i++)
+            {
+                double binStart = min + i * binWidth;
+                double binEnd = binStart + binWidth;
+                int count = data.Count(x => x >= binStart && x < binEnd);
+                double area = (binEnd-binStart) * count;
+                histogramSeries.Items.Add(new HistogramItem(binStart, binEnd, area, count) );
+            }
+
+            model.Series.Add(histogramSeries);
+            return model;
+        }
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (listBox2.Items.Count != 1)
+            {
+                MessageBox.Show("Количество параметров должно быть  равное 1 ", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            List<string> selectedColumn = listBox2.Items.Cast<string>().ToList();
+
+            Parser parser = new Parser();
+            DataTable data = parser.LoadDataFromCSV(filePath);
+
+            int columnIndex = data.Columns.IndexOf(selectedColumn[0]);
+            if (columnIndex == -1)
+            {
+                MessageBox.Show("Выбранный столбец не найден в данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Извлечение данных из выбранного столбца
+            List<double> columnData = new List<double>();
+            foreach (DataRow row in data.Rows)
+            {
+                if (double.TryParse(row[columnIndex].ToString(), out double value))
+                {
+                    columnData.Add(value);
+                }
+            }
+
+            // Создание и отображение диаграммы распределения
+        var model = CreateHistogram(columnData);
+            ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
+            scatterplotform.Show();
+        }
+        private PlotModel CreateQuantilePlot(List<double> data)
+        {
+
+            var model = new PlotModel { Title = "Квантильная диаграмма" };
+            var scatterSeries = new ScatterSeries { MarkerType = MarkerType.Circle };
+
+            // Сортировка данных для построения квантилей
+            data.Sort();
+
+            // Вычисление квантилей и добавление точек на график
+            for (int i = 0; i < data.Count; i++)
+            {
+                double quantile = (double)(i + 1) / data.Count;
+                scatterSeries.Points.Add(new ScatterPoint(quantile, data[i]));
+            }
+            model.Series.Add(scatterSeries);
+            return model;
+
+        }
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (listBox2.Items.Count != 1)
+            {
+                MessageBox.Show("Количество параметров должно быть  равное 1 ", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            List<string> selectedColumn = listBox2.Items.Cast<string>().ToList();
+
+            Parser parser = new Parser();
+            DataTable data = parser.LoadDataFromCSV(filePath);
+
+            int columnIndex = data.Columns.IndexOf(selectedColumn[0]);
+            if (columnIndex == -1)
+            {
+                MessageBox.Show("Выбранный столбец не найден в данных", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Извлечение данных из выбранного столбца
+            List<double> columnData = new List<double>();
+            foreach (DataRow row in data.Rows)
+            {
+                if (double.TryParse(row[columnIndex].ToString(), out double value))
+                {
+                    columnData.Add(value);
+                }
+            }
+
+            // Создание и отображение квантильной диаграммы
+            PlotModel model = CreateQuantilePlot(columnData);           
+            ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
+            scatterplotform.Show();
+        }
+        private PlotModel CreateScatterPlot(DataTable data, int x, int y)
+        {
+            var model = new PlotModel();
+
+            var xColumn = data.Columns[x];
+            var yColumn = data.Columns[y];
+
+            var scatterSeries = new ScatterSeries
+            {
+                MarkerType = MarkerType.Circle,
+                MarkerFill = OxyColors.Blue,
+            };
+
+            for (var i = 0; i < data.Rows.Count; i++)
+            {
+                var xOffset = double.Parse(data.Rows[i][x].ToString(), NumberStyles.Any, CultureInfo.InvariantCulture);
+                var yOffset = double.Parse(data.Rows[i][y].ToString(), NumberStyles.Any, CultureInfo.InvariantCulture);
+
+                scatterSeries.Points.Add(new ScatterPoint(xOffset, yOffset));
+            }
+
+            model.Series.Add(scatterSeries);
+
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = yColumn.ColumnName,
+                Position = AxisPosition.Left,
+            });
+
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = xColumn.ColumnName,
+                Position = AxisPosition.Bottom,
+            });
+
+            return model;
+            
         }
     }
 }
