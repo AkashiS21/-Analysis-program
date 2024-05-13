@@ -13,6 +13,8 @@ using WindowsFormsApp1.Properties;
 using WindowsFormsApp1.Service;
 using Microsoft.Office.Interop.Word;
 using System.Drawing.Text;
+using System.Runtime.CompilerServices;
+
 
 
 
@@ -20,10 +22,13 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+
+        public System.Drawing.Point mouseLocation;
         private string filePath;
         public Form1()
         {
             InitializeComponent();
+            
         }
         private void RoundedLabel(Label label, int radius)
         {
@@ -145,8 +150,33 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("Пожалуйста загрузите валидный датасет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пожалуйста загрузиерте валидный датасет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
+
+        private void label1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - mouseLocation.X;
+                this.Top += e.Y - mouseLocation.Y;
+            }
+        }
+        private void label1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new System.Drawing.Point(e.X, e.Y);
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
