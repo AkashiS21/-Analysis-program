@@ -636,5 +636,15 @@ namespace WindowsFormsApp1
                 scatterplotform.Show();
             }
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
