@@ -195,7 +195,7 @@
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(796, 460);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Графики";
@@ -209,7 +209,7 @@
             this.panel1.Controls.Add(this.button21);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Location = new System.Drawing.Point(613, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(185, 463);
             this.panel1.TabIndex = 30;
@@ -245,11 +245,11 @@
             this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button21.Location = new System.Drawing.Point(31, 388);
+            this.button21.Location = new System.Drawing.Point(31, 376);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(132, 42);
+            this.button21.Size = new System.Drawing.Size(132, 64);
             this.button21.TabIndex = 28;
-            this.button21.Text = "Общий анализ";
+            this.button21.Text = "Общий анализ( график распределния)";
             this.button21.UseVisualStyleBackColor = false;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
@@ -330,7 +330,7 @@
             this.tabPage2.Controls.Add(this.listBox4);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(796, 460);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Матрицы";
@@ -383,7 +383,7 @@
             this.button14.FlatAppearance.BorderSize = 0;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.Location = new System.Drawing.Point(294, 194);
-            this.button14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button14.Margin = new System.Windows.Forms.Padding(2);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(28, 25);
             this.button14.TabIndex = 32;
@@ -468,7 +468,7 @@
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Location = new System.Drawing.Point(294, 324);
-            this.button12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(28, 25);
             this.button12.TabIndex = 26;

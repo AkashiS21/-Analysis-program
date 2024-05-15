@@ -60,21 +60,62 @@ namespace WindowsFormsApp1
         {
             try
             {
-
-                string firstLine = File.ReadLines(filePath).First();
-
-                string[] columnNames = firstLine.Split(';');
-                foreach (string columnName in columnNames)
+                using (var reader = new StreamReader(filePath))
                 {
-                    listBox1.Items.Add(columnName);
-                    listBox4.Items.Add(columnName);
+                    if (!reader.EndOfStream)
+                    {
+                        string firstLine = reader.ReadLine();
+                        string[] columnNames = firstLine.Split(';');
+
+                        foreach (string columnName in columnNames)
+                        {
+                            listBox1.Items.Add(columnName);
+                            listBox4.Items.Add(columnName);
+                        }
+                    }
+
+                    // Проверить все остальные строки на числовые значения
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+                        string[] values = line.Split(';');
+
+                        foreach (string value in values)
+                        {
+                            if (!double.TryParse(value, out _))
+                            {
+                                MessageBox.Show("Файл содержит не числовые значения!");
+                                return;
+                            }
+                        }
+                    }
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка загрузки данных из файла: " + ex.Message);
             }
         }
+        /* private void LoadColumnNamesFromCSV(string filePath)
+         {
+             try
+             {
+
+                 string firstLine = File.ReadLines(filePath).First();
+
+                 string[] columnNames = firstLine.Split(';');
+                 foreach (string columnName in columnNames)
+                 {
+                     listBox1.Items.Add(columnName);
+                     listBox4.Items.Add(columnName);
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Ошибка загрузки данных из файла: " + ex.Message);
+             }
+         }*/
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

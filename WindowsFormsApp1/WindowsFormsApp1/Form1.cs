@@ -78,11 +78,6 @@ namespace WindowsFormsApp1
                     System.Data.DataTable data = parser.LoadDataFromCSV(filePath);
                     dataGridView1.DataSource = data;
 
-                    /*Form2 form2 = new Form2(filePath,this);
-                    form2.Owner = this;
-                    form2.Show();
-                    this.Hide();*/
-
                 }
 
             }
@@ -141,6 +136,7 @@ namespace WindowsFormsApp1
 
         private void dalee(object sender, EventArgs e)
         {
+
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Columns.Count > 0)
             {
                 Form2 form2 = new Form2(filePath, this);
@@ -150,7 +146,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("Пожалуйста загрузиерте валидный датасет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пожалуйста загрузите валидный датасет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
