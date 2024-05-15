@@ -64,9 +64,12 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox2
@@ -110,7 +113,7 @@
             // 
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button9.Location = new System.Drawing.Point(30, 613);
+            this.button9.Location = new System.Drawing.Point(30, 521);
             this.button9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(174, 64);
@@ -121,15 +124,18 @@
             // 
             // button10
             // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(54)))), ((int)(((byte)(72)))));
+            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button10.Location = new System.Drawing.Point(464, 613);
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(30, 613);
             this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(204, 64);
+            this.button10.Size = new System.Drawing.Size(174, 64);
             this.button10.TabIndex = 18;
-            this.button10.Text = "Настройки";
-            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Text = "Назад";
+            this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // label4
@@ -147,10 +153,10 @@
             // 
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button7.Location = new System.Drawing.Point(711, 613);
+            this.button7.Location = new System.Drawing.Point(242, 521);
             this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(198, 64);
+            this.button7.Size = new System.Drawing.Size(176, 64);
             this.button7.TabIndex = 24;
             this.button7.Text = "GitHub";
             this.button7.UseVisualStyleBackColor = true;
@@ -158,13 +164,14 @@
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(233)))), ((int)(((byte)(251)))));
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(188)))), ((int)(((byte)(209)))));
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button8.Location = new System.Drawing.Point(962, 289);
+            this.button8.Location = new System.Drawing.Point(47, 452);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(198, 74);
+            this.button8.Size = new System.Drawing.Size(198, 64);
             this.button8.TabIndex = 25;
             this.button8.Text = "График рассеяния";
             this.button8.UseVisualStyleBackColor = false;
@@ -184,13 +191,10 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(188)))), ((int)(((byte)(209)))));
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(233)))), ((int)(((byte)(251)))));
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.button21);
-            this.tabPage1.Controls.Add(this.button20);
-            this.tabPage1.Controls.Add(this.button19);
             this.tabPage1.Controls.Add(this.listBox1);
-            this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Controls.Add(this.button9);
@@ -207,16 +211,17 @@
             this.tabPage1.Size = new System.Drawing.Size(1198, 715);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Графики";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click_1);
             // 
             // button21
             // 
-            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(233)))), ((int)(((byte)(251)))));
+            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button21.Location = new System.Drawing.Point(962, 413);
+            this.button21.Location = new System.Drawing.Point(47, 613);
             this.button21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(198, 68);
+            this.button21.Size = new System.Drawing.Size(198, 64);
             this.button21.TabIndex = 28;
             this.button21.Text = "Общий анализ";
             this.button21.UseVisualStyleBackColor = false;
@@ -224,13 +229,13 @@
             // 
             // button20
             // 
-            this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(233)))), ((int)(((byte)(251)))));
+            this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(188)))), ((int)(((byte)(209)))));
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button20.Location = new System.Drawing.Point(962, 180);
+            this.button20.Location = new System.Drawing.Point(47, 290);
             this.button20.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(195, 66);
+            this.button20.Size = new System.Drawing.Size(198, 64);
             this.button20.TabIndex = 27;
             this.button20.Text = "Квантильная диаграмма";
             this.button20.UseVisualStyleBackColor = false;
@@ -238,13 +243,13 @@
             // 
             // button19
             // 
-            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(233)))), ((int)(((byte)(251)))));
+            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(188)))), ((int)(((byte)(209)))));
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button19.Location = new System.Drawing.Point(962, 74);
+            this.button19.Location = new System.Drawing.Point(47, 137);
             this.button19.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(198, 65);
+            this.button19.Size = new System.Drawing.Size(198, 64);
             this.button19.TabIndex = 26;
             this.button19.Text = "Диаграмма распределения";
             this.button19.UseVisualStyleBackColor = false;
@@ -413,7 +418,10 @@
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_right_down_2351990;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(365, 137);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -428,7 +436,10 @@
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.free_icon_right_down;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(365, 339);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -538,6 +549,31 @@
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label6.Click += new System.EventHandler(this.label6_Click_1);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(188)))), ((int)(((byte)(209)))));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.button20);
+            this.panel1.Controls.Add(this.button19);
+            this.panel1.Controls.Add(this.button21);
+            this.panel1.Controls.Add(this.button8);
+            this.panel1.Location = new System.Drawing.Point(920, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(278, 712);
+            this.panel1.TabIndex = 30;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(4, 0);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(274, 58);
+            this.label7.TabIndex = 31;
+            this.label7.Text = "Постройте вашу диаграмму!";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -557,6 +593,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -597,5 +634,7 @@
         private System.Windows.Forms.Button button21;
         public System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
     }
 }

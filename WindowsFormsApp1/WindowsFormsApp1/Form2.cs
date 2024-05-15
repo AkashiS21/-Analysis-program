@@ -238,7 +238,8 @@ namespace WindowsFormsApp1
 
         private void button10_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            Form1 form = new Form1();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -643,6 +644,16 @@ namespace WindowsFormsApp1
         }
 
         private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click_1(object sender, EventArgs e)
         {
 
         }
