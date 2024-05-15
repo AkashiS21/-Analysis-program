@@ -185,39 +185,79 @@ namespace WindowsFormsApp1
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Файлы Excel (*.csv)|*.csv";
-            saveFileDialog.Title = "Сохранить данные в Excel";
+            saveFileDialog.Filter = "Файлы Excel (*.csv)|*.csv|Файлы Word (*.docx)|*.docx";
+            saveFileDialog.Title = "Сохранить данные";
             saveFileDialog.ShowDialog();
 
-            
             if (saveFileDialog.FileName != "")
             {
                 try
                 {
-                    
-                    using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                    if (saveFileDialog.FilterIndex == 1) // Если выбран CSV
                     {
-                        
-                        foreach (DataGridViewColumn column in dataGridView.Columns)
+                        using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                         {
-                            writer.Write(column.HeaderText + ",");
-                        }
-                        writer.WriteLine();
-
-                        
-                        foreach (DataGridViewRow row in dataGridView.Rows)
-                        {
-                            foreach (DataGridViewCell cell in row.Cells)
+                            foreach (DataGridViewColumn column in dataGridView.Columns)
                             {
-                                writer.Write(cell.Value + ",");
+                                writer.Write(column.HeaderText + ",");
                             }
                             writer.WriteLine();
-                        }
-                    }
 
-                    MessageBox.Show("Данные успешно сохранены в файл Excel.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            foreach (DataGridViewRow row in dataGridView.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    if (cell.Value != null)
+                                    {
+                                        writer.Write(cell.Value.ToString() + ",");
+                                    }
+                                    else
+                                    {
+                                        writer.Write(",");
+                                    }
+                                }
+                                writer.WriteLine();
+                            }
+                        }
+                        MessageBox.Show("Данные успешно сохранены в файл CSV.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (saveFileDialog.FilterIndex == 2) // Если выбран Word
+                    {
+                        Microsoft.Office.Interop.Word._Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                        object missing = System.Reflection.Missing.Value;
+                        Microsoft.Office.Interop.Word._Document myDoc = wordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                        Microsoft.Office.Interop.Word.Table table = myDoc.Tables.Add(wordApp.Selection.Range, dataGridView.Rows.Count + 1, dataGridView.Columns.Count, ref missing, ref missing);
+
+                        object fileFormat = Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatDocumentDefault; // Формат файла Word
+                        object path = saveFileDialog.FileName; // Путь к файлу
+
+                        for (int i = 0; i < dataGridView.Columns.Count; i++)
+                        {
+                            table.Cell(1, i + 1).Range.Text = dataGridView.Columns[i].HeaderText;
+                        }
+
+                        for (int i = 0; i < dataGridView.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dataGridView.Columns.Count; j++)
+                            {
+                                if (dataGridView.Rows[i].Cells[j].Value != null)
+                                {
+                                    table.Cell(i + 2, j + 1).Range.Text = dataGridView.Rows[i].Cells[j].Value.ToString();
+                                }
+                                else
+                                {
+                                    table.Cell(i + 2, j + 1).Range.Text = "";
+                                }
+                            }
+                        }
+
+                        myDoc.Range().Tables[1].Range.Select(); // Выбор всего содержимого таблицы
+                        myDoc.SaveAs2(ref path, ref fileFormat); // Сохранение документа Word
+                        wordApp.Quit();
+                        MessageBox.Show("Данные успешно сохранены в файл Word.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 catch (Exception ex)
                 {
