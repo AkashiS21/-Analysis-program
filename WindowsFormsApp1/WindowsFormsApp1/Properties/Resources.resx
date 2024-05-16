@@ -121,34 +121,58 @@
   <data name="28370" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>28370.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="free-icon-right-down-2351990" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-right-down-2351990.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="right.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\right.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lefta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lefta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="free-icon-right-arrow-271228" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>free-icon-right-arrow-271228.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Guillemets.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Guillemets.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="free-icon-arrowhead-thin-outline-to-the-left-32542" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>free-icon-arrowhead-thin-outline-to-the-left-32542.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="right-arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\right-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Krestiksvgpng.ru_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Krestiksvgpng.ru_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="right.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\right.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="replyRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\replyRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lefta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lefta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="replyRight2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\replyRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Guillemets.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Guillemets.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="replyRight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\replyRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-right-arrow-271228" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>free-icon-right-arrow-271228.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="free-icon-right-down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-right-down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="True Right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\True Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-right-down-2351990" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-right-down-2351990.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="replyLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\replyLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="True Right1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\True Right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-arrowhead-thin-outline-to-the-left-32542" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>free-icon-arrowhead-thin-outline-to-the-left-32542.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LeftArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LeftArrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

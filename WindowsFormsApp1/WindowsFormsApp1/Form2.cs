@@ -698,5 +698,11 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form1 form = new Form1();
+        }
     }
 }
