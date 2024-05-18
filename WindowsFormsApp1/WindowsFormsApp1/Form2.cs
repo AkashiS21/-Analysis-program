@@ -185,6 +185,7 @@ namespace WindowsFormsApp1
         }
         private void button8_Click(object sender, EventArgs e)
         {
+
             if (listBox2.Items.Count != 2)
             {
                 MessageBox.Show("Количество параметров должно быть  равное 2 ", "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -451,6 +452,16 @@ namespace WindowsFormsApp1
             }
 
             model.Series.Add(histogramSeries);
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = "Count of values",
+                Position = AxisPosition.Left,
+            });
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = "Interval of values",
+                Position = AxisPosition.Bottom,
+            });
             return model;
         }
         private void button19_Click(object sender, EventArgs e)
@@ -491,7 +502,7 @@ namespace WindowsFormsApp1
         private PlotModel CreateQuantilePlot(List<double> data)
         {
 
-            var model = new PlotModel { Title = "Квантильная диаграмма" };
+            var model = new PlotModel { Title = "Упорядоченные по возрастанию данные" };
             var scatterSeries = new ScatterSeries { MarkerType = MarkerType.Circle };
 
             // Сортировка данных для построения квантилей
@@ -504,6 +515,16 @@ namespace WindowsFormsApp1
                 scatterSeries.Points.Add(new ScatterPoint(quantile, data[i]));
             }
             model.Series.Add(scatterSeries);
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = "Index",
+                Position = AxisPosition.Bottom,
+            });
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = "Value",
+                Position = AxisPosition.Left,
+            });
             return model;
 
         }
@@ -544,7 +565,7 @@ namespace WindowsFormsApp1
         }
         private PlotModel CreateScatterPlot(DataTable data, int x, int y)
         {
-            var model = new PlotModel();
+            var model = new PlotModel { Title = "График рассеяния между двумя переменными" };
 
             var xColumn = data.Columns[x];
             var yColumn = data.Columns[y];
@@ -582,7 +603,7 @@ namespace WindowsFormsApp1
         }
         private PlotModel CreateScatterPlotone(DataTable data, int x)
         {
-            var model = new PlotModel();
+            var model = new PlotModel { Title = "Функция распределения" };
 
             var xColumn = data.Columns[x];
 
@@ -633,10 +654,14 @@ namespace WindowsFormsApp1
             model.Series.Add(series);
             model.Axes.Add(new LinearAxis()
             {
-                Title = xColumn.ColumnName,
+                Title = "Value",
                 Position = AxisPosition.Left,
             });
-
+            model.Axes.Add(new LinearAxis()
+            {
+                Title = "",
+                Position = AxisPosition.Bottom,
+            });
             return model;
         }
 

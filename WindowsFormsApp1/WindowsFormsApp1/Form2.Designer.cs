@@ -234,11 +234,11 @@
             this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(244)))), ((int)(((byte)(226)))));
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button21.Location = new System.Drawing.Point(31, 376);
+            this.button21.Location = new System.Drawing.Point(31, 362);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(132, 64);
             this.button21.TabIndex = 28;
-            this.button21.Text = "Общий анализ( график распределния)";
+            this.button21.Text = "Функция распределения";
             this.button21.UseVisualStyleBackColor = false;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
