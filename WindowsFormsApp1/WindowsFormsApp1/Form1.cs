@@ -179,5 +179,13 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string github = "Ссылка на проект на гитхабе:\n\n" +
+                    "https://github.com/AkashiS21/-Analysis-program\n";
+
+            MessageBox.Show(github, "GitHub", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
