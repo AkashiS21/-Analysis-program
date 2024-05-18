@@ -96,33 +96,17 @@ namespace WindowsFormsApp1
                         {
                             dependencyValue = " - очень высокая зависимость";
                         }
-                        else if (cellValue < 0 && cellValue >= -0.20)
+                        else if (cellValue < 0 && cellValue >= -0.50)
                         {
-                            dependencyValue = " - очень слабая отрицательная зависимость";
+                            dependencyValue = " - очень слабая зависимость";
                         }
-                        else if (cellValue < -0.20 && cellValue >= -0.50)
+                        else if (cellValue < -0.50 && cellValue > -1)
                         {
-                            dependencyValue = " - слабая отрицательная зависимость";
-                        }
-                        else if (cellValue < -0.50 && cellValue >= -0.70)
-                        {
-                            dependencyValue = " - средняя отрицательная зависимость";
-                        }
-                        else if (cellValue < -0.70 && cellValue >= -0.90)
-                        {
-                            dependencyValue = " - высокая отрицательная зависимость";
-                        }
-                        else if (cellValue < -0.9 && cellValue > -1)
-                        {
-                            dependencyValue = " - очень высокая отрицательная зависимость";
-                        }
-                        else if (cellValue == -1)
-                        {
-                            dependencyValue = " - абсолютная отрицательная зависимость";
+                            dependencyValue = " - зависимость практически отсутствует";
                         }
                         else if (cellValue == 1)
                         {
-                            dependencyValue = " - абсолютная положительная зависимость";
+                            dependencyValue = " - абсолютная зависимость";
                         }
                         MessageBox.Show(dependency + dependencyValue);
                     }

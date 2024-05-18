@@ -515,6 +515,14 @@ namespace WindowsFormsApp1
                 scatterSeries.Points.Add(new ScatterPoint(quantile, data[i]));
             }
             model.Series.Add(scatterSeries);
+            var annotation = new TextAnnotation()
+            {
+                Text = "В данный момент вы видите перед собой значения выбранного параметра, упорядоченные по возрастанию. По оси х - индекс, по оси у - значение. Этот график необходим, чтобы понять, в каком интервале находятся значения этого параметра. ",
+                TextPosition = new DataPoint(0.5, 0.5), // Позиция текста в координатах диаграммы
+                FontSize = 14,
+                FontWeight = FontWeights.Bold
+            };
+            model.Annotations.Add(annotation);
             model.Axes.Add(new LinearAxis()
             {
                 Title = "Index",
