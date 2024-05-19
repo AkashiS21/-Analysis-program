@@ -450,7 +450,14 @@ namespace WindowsFormsApp1
                 double area = (binEnd - binStart) * count;
                 histogramSeries.Items.Add(new HistogramItem(binStart, binEnd, area, count));
             }
-
+            var annotation = new TextAnnotation()
+            {
+                Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nТакже по данной диаграмме можно визуально сделать вывод о симметричности",
+                TextPosition = new DataPoint(5, 17), // Позиция текста в координатах диаграммы
+                FontSize = 14,
+                FontWeight = FontWeights.Bold
+            };
+            model.Annotations.Add(annotation);
             model.Series.Add(histogramSeries);
             model.Axes.Add(new LinearAxis()
             {
@@ -511,14 +518,14 @@ namespace WindowsFormsApp1
             // Вычисление квантилей и добавление точек на график
             for (int i = 0; i < data.Count; i++)
             {
-                double quantile = (double)(i + 1) / data.Count;
+                double quantile = (double)(i*100) / data.Count;
                 scatterSeries.Points.Add(new ScatterPoint(quantile, data[i]));
             }
             model.Series.Add(scatterSeries);
             var annotation = new TextAnnotation()
             {
-                Text = "В данный момент вы видите перед собой значения выбранного параметра, упорядоченные по возрастанию. По оси х - индекс, по оси у - значение. Этот график необходим, чтобы понять, в каком интервале находятся значения этого параметра. ",
-                TextPosition = new DataPoint(0.5, 0.5), // Позиция текста в координатах диаграммы
+                Text = "В данный момент вы видите перед собой значения выбранного параметра, упорядоченные по возрастанию.\nПо оси х - индекс, по оси у - значение.\nЭтот график необходим, чтобы понять, в каком интервале находятся значения этого параметра.",
+                TextPosition = new DataPoint(60, 3), // Позиция текста в координатах диаграммы
                 FontSize = 14,
                 FontWeight = FontWeights.Bold
             };
@@ -667,7 +674,7 @@ namespace WindowsFormsApp1
             });
             model.Axes.Add(new LinearAxis()
             {
-                Title = "",
+                Title = "Count of points",
                 Position = AxisPosition.Bottom,
             });
             return model;
