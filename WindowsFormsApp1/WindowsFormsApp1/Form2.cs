@@ -433,15 +433,13 @@ namespace WindowsFormsApp1
         private PlotModel CreateHistogram(List<double> data)
         {
             var model = new PlotModel { Title = "Диаграмма распределения" };
-            var histogramSeries = new HistogramSeries { FillColor = OxyColor.FromRgb(176, 212, 255), StrokeThickness = 1 };
+            var histogramSeries = new HistogramSeries { FillColor = OxyColor.FromRgb(176, 212, 255), StrokeThickness = 1 ,TrackerFormatString = "Начальное значение: {5}\nКонечное значение: {6}\nКоличество значений: {7}\nПлощадь: {8}" };
 
-            // Определение интервалов гистограммы
             int binCount = 9;
             double min = data.Min();
             double max = data.Max();
-            double binWidth = (max - min) / binCount; // Ширина интервала
+            double binWidth = (max - min) / binCount; 
 
-            // Добавление данных в гистограмму
             for (int i = 0; i < binCount; i++)
             {
                 double binStart = min + i * binWidth;
@@ -452,10 +450,13 @@ namespace WindowsFormsApp1
             }
             var annotation = new TextAnnotation()
             {
-                Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nТакже по данной диаграмме можно визуально сделать вывод о симметричности",
-                TextPosition = new DataPoint(5, 17), // Позиция текста в координатах диаграммы
-                FontSize = 14,
-                FontWeight = FontWeights.Bold
+                Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nКликните на любой бакет чтобы узнать подробную информацию!!!\nТакже по данной диаграмме можно визуально сделать вывод о симметричности",
+                TextPosition = new DataPoint(50, 17), 
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                TextHorizontalAlignment = OxyPlot.HorizontalAlignment.Center,
+                TextVerticalAlignment = VerticalAlignment.Middle,
+                TextRotation = 0
             };
             model.Annotations.Add(annotation);
             model.Series.Add(histogramSeries);
@@ -491,7 +492,6 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            // Извлечение данных из выбранного столбца
             List<double> columnData = new List<double>();
             foreach (DataRow row in data.Rows)
             {
@@ -501,7 +501,6 @@ namespace WindowsFormsApp1
                 }
             }
 
-            // Создание и отображение диаграммы распределения
             var model = CreateHistogram(columnData);
             ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
             scatterplotform.Show();
@@ -512,10 +511,9 @@ namespace WindowsFormsApp1
             var model = new PlotModel { Title = "Упорядоченные по возрастанию данные" };
             var scatterSeries = new ScatterSeries { MarkerType = MarkerType.Circle };
 
-            // Сортировка данных для построения квантилей
+            
             data.Sort();
 
-            // Вычисление квантилей и добавление точек на график
             for (int i = 0; i < data.Count; i++)
             {
                 double quantile = (double)(i*100) / data.Count;
@@ -524,8 +522,8 @@ namespace WindowsFormsApp1
             model.Series.Add(scatterSeries);
             var annotation = new TextAnnotation()
             {
-                Text = "В данный момент вы видите перед собой значения выбранного параметра, упорядоченные по возрастанию.\nПо оси х - индекс, по оси у - значение.\nЭтот график необходим, чтобы понять, в каком интервале находятся значения этого параметра.",
-                TextPosition = new DataPoint(60, 3), // Позиция текста в координатах диаграммы
+                Text = "В данный момент вы видите перед собой значения выбранного параметра, упорядоченные по возрастанию.\nПо оси х - индекс, по оси у - значение.\nЭтот график необходим, чтобы понять, в каком интервале находятся значения этого параметра.\nВы можете нажать на любую точку,чтобы узнать её индекс и значение",
+                TextPosition = new DataPoint(60, 3), 
                 FontSize = 14,
                 FontWeight = FontWeights.Bold
             };
