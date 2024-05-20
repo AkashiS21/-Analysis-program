@@ -23,8 +23,6 @@ namespace WindowsFormsApp1
         private string filePath;
         private Form1 form1;
         private Form3 form3;
-
-
         public Form2(string filePath, Form1 form1)
         {
             this.form1 = form1;
@@ -44,7 +42,6 @@ namespace WindowsFormsApp1
 
 
         }
-
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.form1.Show();
@@ -433,7 +430,7 @@ namespace WindowsFormsApp1
         private PlotModel CreateHistogram(List<double> data)
         {
             var model = new PlotModel { Title = "Диаграмма распределения" };
-            var histogramSeries = new HistogramSeries { FillColor = OxyColor.FromRgb(176, 212, 255), StrokeThickness = 1 ,TrackerFormatString = "Начальное значение: {5}\nКонечное значение: {6}\nКоличество значений: {7}\nПлощадь: {8}" };
+            var histogramSeries = new HistogramSeries { FillColor = OxyColor.FromRgb(176, 212, 255), StrokeThickness = 1 ,TrackerFormatString = "Начальное значение: {5}\nКонечное значение: {6}\nКоличество значений: {7}" };
 
             int binCount = 9;
             double min = data.Min();
@@ -450,7 +447,7 @@ namespace WindowsFormsApp1
             }
             var annotation = new TextAnnotation()
             {
-                Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nКликните на любой бакет чтобы узнать подробную информацию!!!\nТакже по данной диаграмме можно визуально сделать вывод о симметричности",
+                Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nКликните на любой бакет чтобы узнать подробную информацию!!!",
                 TextPosition = new DataPoint(50, 17), 
                 FontSize = 10,
                 FontWeight = FontWeights.Bold,
@@ -462,12 +459,12 @@ namespace WindowsFormsApp1
             model.Series.Add(histogramSeries);
             model.Axes.Add(new LinearAxis()
             {
-                Title = "Count of values",
+                Title = "Количество значений",
                 Position = AxisPosition.Left,
             });
             model.Axes.Add(new LinearAxis()
             {
-                Title = "Interval of values",
+                Title = "Интервал значений",
                 Position = AxisPosition.Bottom,
             });
             return model;
@@ -509,6 +506,7 @@ namespace WindowsFormsApp1
         {
 
             var model = new PlotModel { Title = "Упорядоченные по возрастанию данные" };
+            
             var scatterSeries = new ScatterSeries { MarkerType = MarkerType.Circle };
 
             
@@ -525,17 +523,19 @@ namespace WindowsFormsApp1
                 Text = "В данный момент вы видите перед собой значения выбранного параметра, упорядоченные по возрастанию.\nПо оси х - индекс, по оси у - значение.\nЭтот график необходим, чтобы понять, в каком интервале находятся значения этого параметра.\nВы можете нажать на любую точку,чтобы узнать её индекс и значение",
                 TextPosition = new DataPoint(60, 3), 
                 FontSize = 14,
-                FontWeight = FontWeights.Bold
+                FontWeight = FontWeights.Bold,
+                
+                
             };
             model.Annotations.Add(annotation);
             model.Axes.Add(new LinearAxis()
             {
-                Title = "Index",
+                Title = "Индекс",
                 Position = AxisPosition.Bottom,
             });
             model.Axes.Add(new LinearAxis()
             {
-                Title = "Value",
+                Title = "Значение",
                 Position = AxisPosition.Left,
             });
             return model;
@@ -588,7 +588,17 @@ namespace WindowsFormsApp1
                 MarkerType = MarkerType.Circle,
                 MarkerFill = OxyColor.FromRgb(176, 212, 255),
             };
+            var annotation = new TextAnnotation()
+            {
+                Text = "Вы смотрите на график рассеяния, который визуализирует зависимость между значениями двух выбранных переменных.\nЧем ближе точки находятся друг к другу, тем плотнее их связь.",
+                TextPosition = new DataPoint(50 ,- 0.5),
+                FontSize = 14,
+                FontWeight = FontWeights.Bold,
+                TextVerticalAlignment = VerticalAlignment.Bottom,
+                TextHorizontalAlignment = OxyPlot.HorizontalAlignment.Center,
 
+            };
+            model.Annotations.Add(annotation);
             for (var i = 0; i < data.Rows.Count; i++)
             {
                 var xOffset = double.Parse(data.Rows[i][x].ToString());
@@ -645,16 +655,16 @@ namespace WindowsFormsApp1
 
             var average = items.Last(v => v >= items.Average());
             var averageIndex = items.IndexOf(average);
-            model.Annotations.Add(CreateLine(OxyColors.Green, averageIndex, "Average"));
+            model.Annotations.Add(CreateLine(OxyColors.Green, averageIndex, "Среднее значение"));
 
             var sorted = list.OrderBy(v => v).ToList();
 
             var median = sorted[sorted.Count / 2];
             var medianIndex = items.IndexOf(median);
-            model.Annotations.Add(CreateLine(OxyColors.Red, medianIndex, "Median"));
+            model.Annotations.Add(CreateLine(OxyColors.Red, medianIndex, "Медиана"));
 
-            model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Min()), "Min"));
-            model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Max()), "Max"));
+            model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Min()), "Минимальное значение"));
+            model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Max()), "Максимальное значение"));
 
             model.Annotations.Add(new LineAnnotation
             {
@@ -716,6 +726,8 @@ namespace WindowsFormsApp1
                 scatterplotform.Show();
             }
         }
+
+
 
         private void label6_Click(object sender, EventArgs e)
         {

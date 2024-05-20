@@ -60,6 +60,12 @@
     <Reference Include="OxyPlot.WindowsForms, Version=2.1.2.0, Culture=neutral, PublicKeyToken=245eacd6b5d2d338, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.WindowsForms.2.1.2\lib\net45\OxyPlot.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="ScottPlot, Version=5.0.31.0, Culture=neutral, PublicKeyToken=86698dc10387c39e, processorArchitecture=MSIL">
       <HintPath>..\packages\ScottPlot.5.0.31\lib\net462\ScottPlot.dll</HintPath>
@@ -159,6 +165,7 @@
     </Compile>
     <Compile Include="Service\CorrelationAnalizer.cs" />
     <Compile Include="Service\Parser.cs" />
+    <Compile Include="Service\PDFLoader.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

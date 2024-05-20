@@ -126,7 +126,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        // FIX: This will throw NullReferenceException
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.form2.Show();
@@ -178,8 +177,9 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    if (saveFileDialog.FilterIndex == 1) // Если выбран CSV
+                    if (saveFileDialog.FilterIndex == 1) 
                     {
+                        
                         using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
                         {
                             foreach (DataGridViewColumn column in dataGridView.Columns)
@@ -206,16 +206,32 @@ namespace WindowsFormsApp1
                         }
                         MessageBox.Show("Данные успешно сохранены в файл CSV.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else if (saveFileDialog.FilterIndex == 2) // Если выбран Word
+                    else if (saveFileDialog.FilterIndex == 2) 
                     {
                         Microsoft.Office.Interop.Word._Application wordApp = new Microsoft.Office.Interop.Word.Application();
                         object missing = System.Reflection.Missing.Value;
                         Microsoft.Office.Interop.Word._Document myDoc = wordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
 
-                        Microsoft.Office.Interop.Word.Table table = myDoc.Tables.Add(wordApp.Selection.Range, dataGridView.Rows.Count + 1, dataGridView.Columns.Count, ref missing, ref missing);
+                        
+                        Microsoft.Office.Interop.Word.Paragraph title = myDoc.Content.Paragraphs.Add(ref missing);
+                        title.Range.Text = "Матрица\n\n";
+                        title.Range.InsertParagraphAfter();
 
-                        object fileFormat = Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatDocumentDefault; // Формат файла Word
-                        object path = saveFileDialog.FileName; // Путь к файлу
+                        
+                        string description = "Кореляционная зависимость - это согласованная зависимость двух или более признаков.\n" +
+                                             "Коэффициент корреляции - это показатель, величина которого варьируется от -1 до 1.\n" +
+                                             "В данном случае обратите внимание на значения в ваших ячейках, значение в ячейке (коэффициент), " +
+                                             "рассчитывается путём корреляцирования двух переменных (название столбца и строки).\n" +
+                                             "Кликните два раза по ячейке, чтобы узнать результат корреляции <3\n\n";
+                        Microsoft.Office.Interop.Word.Paragraph descriptionParagraph = myDoc.Content.Paragraphs.Add(ref missing);
+                        descriptionParagraph.Range.Text = description;
+                        descriptionParagraph.Range.InsertParagraphAfter();
+
+                        
+                        Microsoft.Office.Interop.Word.Table table = myDoc.Tables.Add(descriptionParagraph.Range, dataGridView.Rows.Count + 1, dataGridView.Columns.Count, ref missing, ref missing);
+
+                        object fileFormat = Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatDocumentDefault; 
+                        object path = saveFileDialog.FileName; 
 
                         for (int i = 0; i < dataGridView.Columns.Count; i++)
                         {
@@ -237,10 +253,52 @@ namespace WindowsFormsApp1
                             }
                         }
 
-                        myDoc.Range().Tables[1].Range.Select(); // Выбор всего содержимого таблицы
-                        myDoc.SaveAs2(ref path, ref fileFormat); // Сохранение документа Word
-                        wordApp.Quit();
-                        MessageBox.Show("Данные успешно сохранены в файл Word.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (dataGridView.Columns.Count > 8)
+                        {
+                            DialogResult result = MessageBox.Show("Количество параметров превышает 8. Хотите сохранить данные в формате CSV?", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (result == DialogResult.Yes)
+                            {
+                                
+                                using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                                {
+                                    foreach (DataGridViewColumn column in dataGridView.Columns)
+                                    {
+                                        writer.Write(column.HeaderText + ",");
+                                    }
+                                    writer.WriteLine();
+
+                                    foreach (DataGridViewRow row in dataGridView.Rows)
+                                    {
+                                        foreach (DataGridViewCell cell in row.Cells)
+                                        {
+                                            if (cell.Value != null)
+                                            {
+                                                writer.Write(cell.Value.ToString() + ",");
+                                            }
+                                            else
+                                            {
+                                                writer.Write(",");
+                                            }
+                                        }
+                                        writer.WriteLine();
+                                    }
+                                }
+                                MessageBox.Show("Данные успешно сохранены в файл CSV.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                
+                                MessageBox.Show("Отменено сохранение файла Word.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            
+                            myDoc.Range().Tables[1].Range.Select(); 
+                            myDoc.SaveAs2(ref path, ref fileFormat);
+                            wordApp.Quit();
+                            MessageBox.Show("Данные успешно сохранены в файл Word.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -249,5 +307,6 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
     }
 }
