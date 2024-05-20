@@ -449,7 +449,7 @@ namespace WindowsFormsApp1
             {
                 Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nКликните на любой бакет чтобы узнать подробную информацию!!!",
                 TextPosition = new DataPoint(50, 17), 
-                FontSize = 10,
+                FontSize = 14,
                 FontWeight = FontWeights.Bold,
                 TextHorizontalAlignment = OxyPlot.HorizontalAlignment.Center,
                 TextVerticalAlignment = VerticalAlignment.Middle,
