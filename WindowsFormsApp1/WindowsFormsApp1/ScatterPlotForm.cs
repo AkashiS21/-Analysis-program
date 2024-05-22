@@ -58,10 +58,15 @@ namespace WindowsFormsApp1
             if (saveScreenshot.ShowDialog() == DialogResult.OK)
             {
                 var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                var pdfFilePath = Path.Combine(desktopPath, "Отчёт.pdf");
+                /*var pdfFilePath = Path.Combine(desktopPath, saveScreenshot.FileName);
                 var pngExporter = new PngExporter { Width = this.Width, Height = this.Height};
-                pngExporter.ExportToFile(plotView1.Model, saveScreenshot.FileName);
+                pngExporter.ExportToFile(plotView1.Model, saveScreenshot.FileName);*/
+                var pngFileName = saveScreenshot.FileName; // Получаем имя файла из диалогового окна
+                var pngFilePath = Path.Combine(desktopPath, pngFileName); // Соединяем путь и имя файла
 
+                // Сохраняем диаграмму в файл PNG
+                var pngExporter = new PngExporter { Width = this.Width, Height = this.Height };
+                pngExporter.ExportToFile(plotView1.Model, pngFilePath);
                 Document.Create(container =>
                 {
                     container.Page(page =>
@@ -95,7 +100,7 @@ namespace WindowsFormsApp1
                             });
                     });
                 })
-                .GeneratePdf(pdfFilePath);
+                .GeneratePdf(pngFileName);
             }
         }
 
