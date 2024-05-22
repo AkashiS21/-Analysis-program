@@ -52,21 +52,16 @@ namespace WindowsFormsApp1
 
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        /*private void button1_Click(object sender, System.EventArgs e)
         {
             QuestPDF.Settings.License = LicenseType.Community;
             if (saveScreenshot.ShowDialog() == DialogResult.OK)
             {
                 var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                /*var pdfFilePath = Path.Combine(desktopPath, saveScreenshot.FileName);
+                var pdfFilePath = Path.Combine(desktopPath, saveScreenshot.FileName);
                 var pngExporter = new PngExporter { Width = this.Width, Height = this.Height};
-                pngExporter.ExportToFile(plotView1.Model, saveScreenshot.FileName);*/
-                var pngFileName = saveScreenshot.FileName; // Получаем имя файла из диалогового окна
-                var pngFilePath = Path.Combine(desktopPath, pngFileName); // Соединяем путь и имя файла
+                pngExporter.ExportToFile(plotView1.Model, pdfFilePath);
 
-                // Сохраняем диаграмму в файл PNG
-                var pngExporter = new PngExporter { Width = this.Width, Height = this.Height };
-                pngExporter.ExportToFile(plotView1.Model, pngFilePath);
                 Document.Create(container =>
                 {
                     container.Page(page =>
@@ -100,7 +95,58 @@ namespace WindowsFormsApp1
                             });
                     });
                 })
-                .GeneratePdf(pngFileName);
+                .GeneratePdf(pdfFilePath);
+            }
+        }*/
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            QuestPDF.Settings.License = LicenseType.Community;
+
+            if (saveScreenshot.ShowDialog() == DialogResult.OK)
+            {
+                var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                var pngFileName = saveScreenshot.FileName; // Получаем имя файла из диалогового окна
+                var pngFilePath = Path.Combine(desktopPath, pngFileName); // Полный путь к PNG-файлу
+                var pdfFilePath = Path.Combine(desktopPath, Path.GetFileNameWithoutExtension(pngFileName) + ".pdf"); //  Полный путь к PDF-файлу
+
+                // Сохраняем диаграмму в файл PNG
+                var pngExporter = new PngExporter { Width = this.Width, Height = this.Height };
+                pngExporter.ExportToFile(plotView1.Model, pngFilePath);
+
+                // Создаем PDF-документ
+                Document.Create(container =>
+                {
+                    container.Page(page =>
+                    {
+                        page.Size(PageSizes.A4);
+                        page.Margin(2, Unit.Centimetre);
+                        page.Background(Colors.White);
+                        page.DefaultTextStyle(x => x.FontSize(20));
+
+                        page.Header()
+                            .Text("Ваша диаграмма")
+                            .SemiBold().FontSize(36).FontColor(Colors.Blue.Medium);
+
+                        page.Content()
+                            .PaddingVertical(1, Unit.Centimetre)
+                            .Column(x =>
+                            {
+                                x.Spacing(20);
+
+                                x.Item().Text(Placeholders.LoremIpsum());
+                                x.Item().Image(pngFilePath); // Используем полный путь к файлу PNG
+                            });
+
+                        page.Footer()
+                            .AlignCenter()
+                            .Text(x =>
+                            {
+                                x.Span("Спасибо что пользуетесь нашим приложением\n");
+                                x.CurrentPageNumber();
+                            });
+                    });
+                })
+                .GeneratePdf(pdfFilePath);
             }
         }
 
