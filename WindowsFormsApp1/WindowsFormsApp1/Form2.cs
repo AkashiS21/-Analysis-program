@@ -561,7 +561,6 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            // Извлечение данных из выбранного столбца
             List<double> columnData = new List<double>();
             foreach (DataRow row in data.Rows)
             {
@@ -571,7 +570,6 @@ namespace WindowsFormsApp1
                 }
             }
 
-            // Создание и отображение квантильной диаграммы
             PlotModel model = CreateQuantilePlot(columnData);
             ScatterPlotForm scatterplotform = new ScatterPlotForm(model);
             scatterplotform.Show();
