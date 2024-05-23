@@ -19,7 +19,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             InitializePlot();
-
         }
         private void InitializePlot()
         {
@@ -307,6 +306,5 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
     }
 }

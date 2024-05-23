@@ -39,13 +39,10 @@ namespace WindowsFormsApp1
             {
                 e.Cancel = true;
             }
-
-
         }
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.form1.Show();
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -157,8 +154,6 @@ namespace WindowsFormsApp1
                 form3.SetCorrelationResults(matrix, featureColumns, targetColumns);
                 form3.Show();
             }
-
-
         }
         private void button8_Click(object sender, EventArgs e)
         {
@@ -275,7 +270,6 @@ namespace WindowsFormsApp1
 
             try
             {
-                // Открыть PDF-файл
                 System.Diagnostics.Process.Start(pdfFilePath);
             }
             catch (Exception ex)

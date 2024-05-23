@@ -24,7 +24,6 @@ public class CorrelationAnalyzer
                 matrix[row, column] = CalculatePearsonCorrelation(x, y);
             }
         }
-
         return matrix;
     }
 

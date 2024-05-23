@@ -41,7 +41,6 @@ namespace WindowsFormsApp1
             saveScreenshot.RestoreDirectory = true;
         }
         
-
         private void plotView1_Click(object sender, System.EventArgs e)
         {
 
@@ -58,15 +57,13 @@ namespace WindowsFormsApp1
             if (saveScreenshot.ShowDialog() == DialogResult.OK)
             {
                 var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                var pngFileName = saveScreenshot.FileName; // Получаем имя файла из диалогового окна
-                var pngFilePath = Path.Combine(desktopPath, pngFileName); // Полный путь к PNG-файлу
-                var pdfFilePath = Path.Combine(desktopPath, Path.GetFileNameWithoutExtension(pngFileName) + ".pdf"); //  Полный путь к PDF-файлу
+                var pngFileName = saveScreenshot.FileName; 
+                var pngFilePath = Path.Combine(desktopPath, pngFileName); 
+                var pdfFilePath = Path.Combine(desktopPath, Path.GetFileNameWithoutExtension(pngFileName) + ".pdf");
 
-                // Сохраняем диаграмму в файл PNG
                 var pngExporter = new PngExporter { Width = this.Width, Height = this.Height };
                 pngExporter.ExportToFile(plotView1.Model, pngFilePath);
 
-                // Создаем PDF-документ
                 Document.Create(container =>
                 {
                     container.Page(page =>
@@ -104,6 +101,5 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Данные успешно сохранены в файл pdf.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
     }
 }

@@ -14,7 +14,6 @@ namespace WindowsFormsApp1.Service
         public DataTable LoadDataFromCSV(string filePath)
         {
             DataTable dataTable = new DataTable();
-
             try
             {
                 string[] lines = File.ReadAllLines(filePath);
@@ -39,7 +38,6 @@ namespace WindowsFormsApp1.Service
             {
                 MessageBox.Show("Ошибка загрузки данных из файла: " + ex.Message);
             }
-
             return dataTable;
         }
     }

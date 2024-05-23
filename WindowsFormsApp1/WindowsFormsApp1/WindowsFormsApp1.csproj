@@ -234,7 +234,6 @@
     </Compile>
     <Compile Include="Service\CorrelationAnalizer.cs" />
     <Compile Include="Service\Parser.cs" />
-    <Compile Include="Service\PDFLoader.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
