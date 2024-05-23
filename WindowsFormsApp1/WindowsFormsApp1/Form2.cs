@@ -94,26 +94,6 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Ошибка загрузки данных из файла: " + ex.Message);
             }
         }
-        /* private void LoadColumnNamesFromCSV(string filePath)
-         {
-             try
-             {
-
-                 string firstLine = File.ReadLines(filePath).First();
-
-                 string[] columnNames = firstLine.Split(';');
-                 foreach (string columnName in columnNames)
-                 {
-                     listBox1.Items.Add(columnName);
-                     listBox4.Items.Add(columnName);
-                 }
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show("Ошибка загрузки данных из файла: " + ex.Message);
-             }
-         }*/
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -306,21 +286,6 @@ namespace WindowsFormsApp1
 
         private void AnalyzeCorrelation()
         {
-            //List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
-            //List<string> targetColumns = listBox3.Items.Cast<string>().ToList();
-
-            //Parser parser = new Parser();
-            //DataTable data = parser.LoadDataFromCSV(filePath);
-
-            //CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
-            //Dictionary<string, double> correlationResults = analyzer.AnalyzeCorrelation(data, featureColumns, targetColumns);
-
-            //TODO сделать пейджи отдельно для графика и для матрицы
-            //TODO 2 пейдж матрица(корреляция только в матрице), элементы: 3 листа, стрелки, кнопки "параметры", "гитхаб", "построить матрицу", "сброс", "информация для пользователя", реализовать ограничение минимум 1 таргет
-            //TODO 1 пейдж график, элементы: 2 листа, таргета нет, ограничение на 2 параметра максимум. кнопки "гитхаб", "построить график", "сброс", "информация для пользователя"
-            // в форме 3 матрица сделать пояснения к ячейкам снизу либо в ячейках через меседжбокс
-            // реализовать полноэкранный режим на всех формах.
-
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -418,14 +383,6 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Ошибка открытия документа: " + ex.Message);
             }
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            string github = "Ссылка на проект на гитхабе:\n\n" +
-                    "https://github.com/AkashiS21/-Analysis-program\n";
-
-            MessageBox.Show(github, "GitHub", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private PlotModel CreateHistogram(List<double> data)
         {
