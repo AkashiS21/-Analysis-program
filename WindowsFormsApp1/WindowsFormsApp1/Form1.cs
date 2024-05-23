@@ -133,11 +133,32 @@ namespace WindowsFormsApp1
         {
 
         }
+        private bool IsDigitsOnly(string text)
+        {
+            foreach (char c in text)
+            {
+                if (!char.IsDigit(c))
+                    return false;
+            }
+            return true;
+        }
+        private bool IsDataGridViewContentValid(DataGridView dataGridView)
+        {
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null && !IsDigitsOnly(cell.Value.ToString()))
+                        return false;
+                }
+            }
+            return true;
+        }
 
         private void dalee(object sender, EventArgs e)
         {
 
-            if (dataGridView1.Rows.Count > 0 && dataGridView1.Columns.Count > 0)
+            if (IsDataGridViewContentValid(dataGridView1))
             {
                 Form2 form2 = new Form2(filePath, this);
                 form2.Owner = this;
@@ -146,7 +167,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("Пожалуйста загрузите валидный датасет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пожалуйста загрузите валидный датасет с цифрами в ячейках.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
