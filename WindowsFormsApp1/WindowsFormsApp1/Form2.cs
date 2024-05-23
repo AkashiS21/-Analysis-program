@@ -545,7 +545,7 @@ namespace WindowsFormsApp1
             };
             var annotation = new TextAnnotation()
             {
-                Text = "Вы смотрите на график рассеяния, который визуализирует зависимость между значениями двух выбранных переменных.\nЧем ближе точки находятся друг к другу, тем плотнее их связь.",
+                Text = "Вы смотрите на график рассеяния, который визуализирует зависимость между значениями двух выбранных переменных.\nЧем ближе точки находятся друг к другу, тем плотнее их связь.\nЕсли точки хаотично разбросаны по пространству, значит связь между переменными крайне низкая или полностью отсутствует.",
                 TextPosition = new DataPoint(50 ,- 0.5),
                 FontSize = 14,
                 FontWeight = FontWeights.Bold,
@@ -621,6 +621,17 @@ namespace WindowsFormsApp1
             model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Min()), "Минимальное значение"));
             model.Annotations.Add(CreateLine(OxyColors.Blue, items.IndexOf(items.Max()), "Максимальное значение"));
 
+            var annotation = new TextAnnotation()
+            {
+                Text = "Вы смотрите на функцию распределения, построенную по выбранному параметру.\nПо оси х - индекс, по оси у - значение.\nНа графике изображены минимальное, максимальное и среднее значения, а также медиана, расчитанные исходя из значений заданного параметра.\nТакже, визуально оценив график можно сделать вывод о распределении:\nЧем более нормальное распределение у данных, тем более симметричен будет график.",
+                TextPosition = new DataPoint(50, -3),
+                FontSize = 14,
+                FontWeight = FontWeights.Bold,
+                TextVerticalAlignment = VerticalAlignment.Bottom,
+                TextHorizontalAlignment = OxyPlot.HorizontalAlignment.Center,
+
+            };
+            model.Annotations.Add(annotation);
             model.Annotations.Add(new LineAnnotation
             {
                 StrokeThickness = 1,
@@ -632,12 +643,12 @@ namespace WindowsFormsApp1
             model.Series.Add(series);
             model.Axes.Add(new LinearAxis()
             {
-                Title = "Value",
+                Title = "Значение",
                 Position = AxisPosition.Left,
             });
             model.Axes.Add(new LinearAxis()
             {
-                Title = "Count of points",
+                Title = "Индекс",
                 Position = AxisPosition.Bottom,
             });
             return model;

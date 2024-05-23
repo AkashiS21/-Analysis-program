@@ -142,33 +142,13 @@ namespace WindowsFormsApp1
             }
             return true;
         }
-        private bool IsDataGridViewContentValid(DataGridView dataGridView)
-        {
-            foreach (DataGridViewRow row in dataGridView.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    if (cell.Value != null && !IsDigitsOnly(cell.Value.ToString()))
-                        return false;
-                }
-            }
-            return true;
-        }
-
         private void dalee(object sender, EventArgs e)
-        {
-
-            if (IsDataGridViewContentValid(dataGridView1))
-            {
+        {         
                 Form2 form2 = new Form2(filePath, this);
                 form2.Owner = this;
                 form2.Show();
                 this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Пожалуйста загрузите валидный датасет с цифрами в ячейках.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void button5_Click(object sender, EventArgs e)
