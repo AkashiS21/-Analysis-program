@@ -1,11 +1,10 @@
-﻿using System;
+﻿using OxyPlot.WindowsForms;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing;
-using OxyPlot.WindowsForms;
-using OfficeOpenXml;
-using System.IO;
 
 namespace WindowsFormsApp1
 {

@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using WindowsFormsApp1.Properties;
 using WindowsFormsApp1.Service;
-using Microsoft.Office.Interop.Word;
-using System.Drawing.Text;
-using System.Runtime.CompilerServices;
 
 
 
@@ -28,7 +17,6 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            
         }
         private void RoundedLabel(Label label, int radius)
         {

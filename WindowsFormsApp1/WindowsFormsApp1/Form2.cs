@@ -1,20 +1,14 @@
-﻿using OxyPlot.Series;
-using OxyPlot.WindowsForms;
-using OxyPlot;
+﻿using OxyPlot;
 using OxyPlot.Annotations;
+using OxyPlot.Axes;
+using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Service;
-using OxyPlot.Axes;
-using System.Globalization;
 
 namespace WindowsFormsApp1
 {
@@ -67,8 +61,6 @@ namespace WindowsFormsApp1
                             listBox4.Items.Add(columnName);
                         }
                     }
-
-                    // Проверить все остальные строки на числовые значения
                     while (!reader.EndOfStream)
                     {
                         string line = reader.ReadLine();
@@ -167,10 +159,8 @@ namespace WindowsFormsApp1
                 List<string> featureColumns = listBox2.Items.Cast<string>().ToList();
                 List<string> targetColumns = listBox2.Items.Cast<string>().ToList();
 
-
                 Parser parser = new Parser();
                 CorrelationAnalyzer analyzer = new CorrelationAnalyzer();
-
 
                 DataTable data = parser.LoadDataFromCSV(filePath);
 
@@ -370,7 +360,6 @@ namespace WindowsFormsApp1
 
             try
             {
-                // Открыть PDF-файл
                 System.Diagnostics.Process.Start(pdfFilePath);
             }
             catch (Exception ex)
