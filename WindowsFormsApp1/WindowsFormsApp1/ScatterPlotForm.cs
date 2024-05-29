@@ -84,7 +84,6 @@ namespace WindowsFormsApp1
                             .Column(x =>
                             {
                                 x.Spacing(20);
-                                x.Item().Text("Вы сохранили построенный график.");
                                 x.Item().Image(pngFilePath);
                             });
 

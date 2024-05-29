@@ -256,7 +256,7 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string pdfFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\параметры.pdf";
+            string pdfFilePath = @"C:\Users\zhere\kursach\WindowsFormsApp1\WindowsFormsApp1\Resources\параметры.pdf";
 
             try
             {
@@ -356,7 +356,7 @@ namespace WindowsFormsApp1
 
         private void button18_Click(object sender, EventArgs e)
         {
-            string pdfFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Руководство корреляция.pdf";
+            string pdfFilePath = @"C:\Users\zhere\kursach\WindowsFormsApp1\WindowsFormsApp1\Resources\Руководство корреляция.pdf";
 
             try
             {
@@ -387,7 +387,7 @@ namespace WindowsFormsApp1
             }
             var annotation = new TextAnnotation()
             {
-                Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nКликните на любой бакет чтобы узнать подробную информацию!!!",
+                Text = "В данный момент вы видите перед собой диаграмму распределения, которая показывает какие интервалы значений наиболее часто встречаются в загруженных данных.\nПо оси х - интервал, к которому пренадлежат значения, по оси у - значение.\nКликните на любой столбец чтобы узнать подробную информацию!!!",
                 TextPosition = new DataPoint(50, 17), 
                 FontSize = 14,
                 FontWeight = FontWeights.Bold,
@@ -606,7 +606,7 @@ namespace WindowsFormsApp1
 
             var annotation = new TextAnnotation()
             {
-                Text = "Вы смотрите на функцию распределения, построенную по выбранному параметру.\nПо оси х - индекс, по оси у - значение.\nНа графике изображены минимальное, максимальное и среднее значения, а также медиана, расчитанные исходя из значений заданного параметра.\nТакже, визуально оценив график можно сделать вывод о распределении:\nЧем более нормальное распределение у данных, тем более симметричен будет график.",
+                Text = "Вы смотрите на функцию распределения, построенную по выбранному параметру.\nПо оси х - индекс, по оси у - значение.\nНа графике изображены минимальное, максимальное и среднее значения, а также медиана, расчитанные исходя из значений заданного параметра.",
                 TextPosition = new DataPoint(50, -3),
                 FontSize = 14,
                 FontWeight = FontWeights.Bold,

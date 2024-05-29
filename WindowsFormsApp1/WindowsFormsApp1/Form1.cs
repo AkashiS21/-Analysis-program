@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string pdfFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\Руководство главное окно.pdf";
+            string pdfFilePath = @"C:\Users\zhere\kursach\WindowsFormsApp1\WindowsFormsApp1\Resources\Руководство главное окно.pdf";
 
             try
             {
@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string pdfFilePath = @"C:\Users\пк\kursach\-Analysis-program\WindowsFormsApp1\WindowsFormsApp1\Resources\github.pdf";
+            string pdfFilePath = @"C:\Users\zhere\kursach\WindowsFormsApp1\WindowsFormsApp1\Resources\github.pdf";
             try
             {
                 System.Diagnostics.Process.Start(pdfFilePath);
